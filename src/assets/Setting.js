@@ -23,8 +23,5 @@ const Setting = {
     css: (cssName) => {
       return require('@/assets/resource/theme/css/' + cssName);
     },
-    js: (jsName) => {
-      return require('@/assets/resource/theme/js/' + jsName);
-    },
   },
 };
