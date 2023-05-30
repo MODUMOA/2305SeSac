@@ -3,9 +3,8 @@
     <div class="col-12 col-center mw-1230 pl30 pr30 header_con" ref="originHeader">
       <div class="col-0 left_box">
         <a href="/" class="col-0 logo_con">
-          <img :src="this.$resource.themeRes.img('logo.png')" alt="로고" />
+          <img :src="this.$resource.themeRes.img('logo-white.png')" alt="로고" style="width: 70px;"/>
         </a>
-        <The-header-util></The-header-util>
       </div>
       <div class="col-0 right_box">
         <the-header-gnb></the-header-gnb>
@@ -21,16 +20,8 @@
             <img :src="this.$resource.themeRes.img('logo-white.png')" alt="로고" />
           </a>
           <div class="col-0">
-            <ul class="col-0 my_page_con mr20 mt7">
-              <li>
-                <a href="javascript:void(0)" onclick="login.openLoginPopup()">로그인</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onclick="signUp.openSignUpPopup()">회원가입</a>
-              </li>
-            </ul>
-            <a href="javascript:void(0)" class="col-0 popup_close_btn" @click="closeClickGnb()">닫기 버튼</a
-            >
+            <The-header-util></The-header-util>
+            <a href="javascript:void(0)" class="col-0 popup_close_btn" @click="closeClickGnb()">닫기 버튼</a>
           </div>
         </div>
         <div class="col-12 bottom_con">

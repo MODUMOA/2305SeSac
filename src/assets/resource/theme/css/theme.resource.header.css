@@ -1,12 +1,5 @@
-header{position: absolute; top: 0; left: 0; background-color :#fff;  z-index: 100; width :100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ced0dd;}
-.header_con{display: flex;}
-.header_con .logo_con{width: 100px;}
-.header_con .right_box{flex: 1 1 auto; display: flex; justify-content: flex-end; align-items: center;}
-.header_con .gnb_con{font-size: 0; line-height: 0; text-align: right; padding-right: 40px;}
-.header_con .gnb_con > li{display: inline-block; margin-right: 30px; position: relative;}
-.header_con .gnb_con > li:last-child{margin-right: 0;}
-.header_con .gnb_con > li > a{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 300;}
-.header_con .gnb_con > li > a.active{font-weight: 600; color: #4f38b4;}
+header{position: fixed; top: 0; left: 0; background-color :#A7CEC3;  z-index: 100; width :100%; padding-top: 20px; padding-bottom: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;}
+.header_con{display: flex; justify-content: space-between; align-items: center;}
 
 .header_con .my_page_con{font-size: 0; line-height: 0; flex: 0 0 auto; margin-left: 10px;}
 .header_con .my_page_con > li{display: inline-block; padding-right: 10px; position: relative;}
@@ -15,11 +8,10 @@ header{position: absolute; top: 0; left: 0; background-color :#fff;  z-index: 10
 .header_con .my_page_con > li:last-child::after{content: none;}
 .header_con .my_page_con > li > a{font-size: 13px; font-size: 1.3rem; line-height: 19px; line-height: 1.9rem; font-weight: 300;}
 
-.hamburger_con{width: 28px; height: 17px; cursor: pointer;}
-.hamburger_con > span{display: inline-block; vertical-align: middle; width: 28px; height: 3px; background-color: #17181d;}
-.hamburger_con > span::before{content: ""; display: inline-block; position: absolute; left: 0; top: 0; width: 28px; height: 3px; background-color: #17181d;}
-.hamburger_con > span::after{content: ""; display: inline-block; position: absolute; left: 0; bottom: 0; width: 18px; height: 3px; background-color: #17181d; transition: width 0.2s ease;}
-.hamburger_con:hover > span::after{width: 28px;}
+.hamburger_con{width: 20px; height: 14px; cursor: pointer;}
+.hamburger_con > span{display: inline-block; vertical-align: middle; width: 100%; height: 2px; background-color: #575757; margin-top: 3px;}
+.hamburger_con > span::before{content: ""; display: inline-block; position: absolute; left: 0; top: 0; width: 100%; height: 2px; background-color: #575757;}
+.hamburger_con > span::after{content: ""; display: inline-block; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background-color: #575757;}
 
 
 .click_header_wrap{position: fixed; top: 0; right: 0; transform: translateY(-100%); transition: transform 0.2s ease; z-index: 10001; width: 100%; height: 80%; background-color: #8c9bd3; opacity: 0; display: flex; align-items: center;}

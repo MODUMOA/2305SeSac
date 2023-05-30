@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import AppMain from '../views/AppMain.vue'
+import AppNotice from '../views/AppNotice.vue'
+import AppUser from '../views/AppUser.vue'
+
 
 //import store from '@/store';
 
@@ -51,17 +54,45 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'Main',
+    component: AppMain
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/notice',
+    name: 'Notice',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    component: AppNotice,
+    redirect: '/notice/list',
+    children : [
+      {
+        path: 'list',
+        name: 'noticeList',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/notice/list/List.vue'),
+      },
+    ]
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: AppUser,
+    children : [
+      {
+        path: 'login',
+        name: 'UserLogin',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/user/Login.vue'),
+      },
+      {
+        path: 'signUp',
+        name: 'UserSignUp',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/user/SignUp.vue'),
+      },
+    ]
+  },
 ]
 
 const router = new VueRouter({

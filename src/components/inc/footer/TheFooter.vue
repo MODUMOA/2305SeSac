@@ -1,23 +1,20 @@
 <template>
-  <footer class="col-12 pt30 pb30 footer_wrap">
-    <div class="col-12 col-center mw-1230 pl30 pr30 footer_inner">
-      <div class="col-0 img_box">
-        <img :src="this.$resource.themeRes.img('logo.png')" alt="로고" />
-      </div>
-      <div class="col-12 footer-text">
-        <div class="col-12 footer-text-click">
-          <div class="col-1">
-            <a href="">이용약관</a>
-          </div>
-          <div class="col-1">
-            <a href="">개인정보처리방침</a>
-          </div>
-        </div>
-        <div class="col-12 footer-text-read">
-          <p>본 사이트의 콘텐츠는 저작권법의 보호를 받는 바 무단 전재, 복사, 배포 등을 금합니다.</p>
-          <p>Copyright © SAMSUNG All Rights Reserved.</p>
-        </div>
-      </div>
+  <footer class="col-12 footer_wrap">
+    <div class="col-12 col-center mw-1230 pl20 pr20 pl-md-30 pr-md-30 footer_inner">
+      <ul class="col-12 footer_list">
+        <li>
+          <router-link :to="{name : 'Main'}"><img :src="this.$resource.themeRes.img('footer_home_icon.png')" alt="홈 아이콘" style="width: 18px;"/><span>메인</span></router-link>
+        </li>
+        <li>
+          <a href="javascript:void(0);"><img :src="this.$resource.themeRes.img('footer_qr_icon.png')" alt="QR 아이콘" style="width: 20px;"/><span>QR</span></a>
+        </li>
+        <li>
+          <router-link :to="{name : 'DashBoard'}"><img :src="this.$resource.themeRes.img('footer_leaf_icon.png')" alt="나뭇잎 아이콘" style="width: 20px;"/><span>배출현황</span></router-link>
+        </li>
+        <li>
+          <router-link :to="{name : 'Main'}"><img :src="this.$resource.themeRes.img('footer_card_icon.png')" alt="카드 아이콘" style="width: 20px;"/><span>결제이력</span></router-link>
+        </li>
+      </ul>
     </div>
   </footer>
 </template>
