@@ -7,7 +7,6 @@
         </a>
       </div>
       <div class="col-0 right_box">
-        <the-header-gnb></the-header-gnb>
         <div class="col-0 hamburger_con" @click="openClickGnb()">
           <span></span>
         </div>
@@ -20,7 +19,6 @@
             <img :src="this.$resource.themeRes.img('logo-white.png')" alt="로고" />
           </a>
           <div class="col-0">
-            <The-header-util></The-header-util>
             <a href="javascript:void(0)" class="col-0 popup_close_btn" @click="closeClickGnb()">닫기 버튼</a>
           </div>
         </div>
@@ -34,13 +32,11 @@
 </template>
 
 <script>
-import TheHeaderUtil from './item/Util.vue';
 import TheHeaderGnb from './item/Gnb.vue';
 
 export default {
   name: 'TheHeader',
   components: {
-    TheHeaderUtil,
     TheHeaderGnb,
   },
   methods : {

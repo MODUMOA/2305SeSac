@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import AppMain from '../views/AppMain.vue'
 import AppNotice from '../views/AppNotice.vue'
 import AppUser from '../views/AppUser.vue'
+import AppTree from '../views/AppTree.vue'
 
 
 //import store from '@/store';
@@ -98,6 +99,11 @@ const routes = [
           import(/* webpackChunkName: "notice" */ '../components/user/Update.vue'),
       },
     ]
+  },
+  {
+    path: '/tree',
+    name: 'Tree',
+    component: AppTree
   },
 ]
 

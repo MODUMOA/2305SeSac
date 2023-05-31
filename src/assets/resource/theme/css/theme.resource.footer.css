@@ -3,13 +3,13 @@
 .footer_list > li{width: 25%; position: relative; overflow: hidden; box-sizing: border-box; padding-left: 20px; float: left;}
 .footer_list > li > a{display: block; width: 100%; position: relative; box-sizing: border-box; padding-top: 27px; text-align: center; background-repeat: no-repeat;}
 .footer_list > li > a > span{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.05rem; color: #A2BEB6;}
-.footer_list > li > a.router-link-active > span{color: #386C5D;}
+.footer_list > li > a.router-link-exact-active > span{color: #386C5D;}
 .footer_list > li.home > a{background-image: url('../img/footer_home_icon.png'); background-size: 18px 20px; background-position: top center;}
-.footer_list > li.home > a.router-link-active{background-image: url('../img/footer_home_icon_active.png');}
+.footer_list > li.home > a.router-link-exact-active{background-image: url('../img/footer_home_icon_active.png');}
 .footer_list > li.qr > a{background-image: url('../img/footer_qr_icon.png'); background-size: 20px 19px; background-position: top center;}
-.footer_list > li.qr > a.router-link-active{background-image: url('../img/footer_qr_icon_active.png');}
+.footer_list > li.qr > a.router-link-exact-active{background-image: url('../img/footer_qr_icon_active.png');}
 .footer_list > li.leaf > a{background-image: url('../img/footer_leaf_icon.png'); background-size: 20px 20px; background-position: top center;}
-.footer_list > li.leaf > a.router-link-active{background-image: url('../img/footer_leaf_icon_active.png');}
+.footer_list > li.leaf > a.router-link-exact-active{background-image: url('../img/footer_leaf_icon_active.png');}
 .footer_list > li.card > a{background-image: url('../img/footer_card_icon.png'); background-size: 20px 15px; background-position: top 4px center;}
-.footer_list > li.card > a.router-link-active{background-image: url('../img/footer_card_icon_active.png');}
+.footer_list > li.card > a.router-link-exact-active{background-image: url('../img/footer_card_icon_active.png');}
 
