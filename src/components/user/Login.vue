@@ -25,7 +25,7 @@
       <button class="col-12 tc mb30 btn_style_0 type_2 bg_yellow">
         로그인
       </button>
-      <ul class="col-12 login_info_list_con">
+      <ul class="col-12 mb20 login_info_list_con">
         <li>
           <label class="switch_style_0">
             <input type="checkbox"/>
@@ -35,6 +35,7 @@
         </li>
         <li><router-link :to="{name : 'UserSignUp'}">회원가입</router-link></li>
       </ul>
+      <button class="col-12 tc btn_style_0 bg_yellow type_2 kakao">카카오 로그인</button>
     </div>
   </div>
 </template>

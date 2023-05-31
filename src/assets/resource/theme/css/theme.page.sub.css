@@ -32,7 +32,10 @@
 /*btn_style_0*/
 .btn_style_0{appearance: none; cursor: pointer; padding: 7px 8px; border: 0px none; font-size: 11px; font-size: 1.1rem; line-height: 17px; line-height: 1.7rem; font-weight: 500; overflow: hidden; border-radius: 10px; color: #4B4B4B;}
 .btn_style_0.bg_yellow{background-color: #FED018;}
+.btn_style_0.bg_green{background-color: #A7CEC3;}
 .btn_style_0.type_2{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; color: #000;}
+.btn_style_0.white{color: #fff;}
+.btn_style_0.kakao{padding-top: 12px; padding-bottom: 12px; background-image: url('../../common/img/18x17_kakao_icon.png'); background-size: 18px 17px; background-repeat: no-repeat; background-position: left 10px center;}
 
 /*로그인 페이지*/
 .login_wrap .img_box{margin-top: -250px; margin-bottom: -250px;}
@@ -55,3 +58,5 @@
 .switch_style_0 .slider.round {border-radius: 27px;}
 .switch_style_0 .slider.round::before {border-radius: 50%;}
 .switch_style_0 span:not(.slider){vertical-align: middle; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em;}
+
+

@@ -3,7 +3,8 @@
     <the-header></the-header>
     <div class="col-12 col-center mw-1230 pl20 pr20 pl-md-30 pr-md-30">
     <div class="col-12 pt17 pb20 mb27 white_container">
-      <div class="col-12 tc font-size-15">소셜 계정으로 편하게 가입해요</div>
+      <div class="col-12 mb17 tc font-size-15">소셜 계정으로 편하게 가입해요</div>
+      <button class="col-12 tc btn_style_0 bg_yellow type_2 kakao">카카오 로그인</button>
     </div>
     <div class="col-12 mb27 signup_divide">
       <hr/>
