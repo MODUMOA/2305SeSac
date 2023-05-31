@@ -91,6 +91,12 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/user/SignUp.vue'),
       },
+      {
+        path: 'update',
+        name: 'UserUpdate',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/user/Update.vue'),
+      },
     ]
   },
 ]

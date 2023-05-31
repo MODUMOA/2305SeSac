@@ -1,7 +1,6 @@
 <template>
   <main class="col-12">
-    <div class="col-12 col-center mw-1230 pl20 pr20 pl-md-30 pr-md-30">
-    </div>    
+    <router-view></router-view>    
   </main>
 </template>
 
@@ -11,6 +10,3 @@ export default {
   name: 'AppUser',
 }
 </script>
-
-<style scope>
-</style>
