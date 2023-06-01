@@ -11,7 +11,7 @@
         <router-link :to="{ name: 'Notice' }">공지사항</router-link>
       </li>
       <li class="mypage">
-        <router-link :to="{ name: 'MyPage' }">마이페이지</router-link>
+        <router-link :to="{ name: 'UserUpdate' }">마이페이지</router-link>
       </li>
       <li class="tree">
         <router-link :to="{ name: 'Tree' }">나무도감</router-link>

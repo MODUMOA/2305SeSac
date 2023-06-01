@@ -5,6 +5,7 @@ import AppNotice from '../views/AppNotice.vue'
 import AppUser from '../views/AppUser.vue'
 import AppTree from '../views/AppTree.vue'
 import AppPayment from '../views/AppPayment.vue'
+import AppQR from '../views/AppQR.vue'
 import AppDashBoard from '../views/AppDashBoard.vue'
 
 
@@ -134,7 +135,27 @@ const routes = [
     path: '/payment',
     name: 'payment',
     component : AppPayment
-  }
+  },
+  {
+    path: '/qr',
+    name: 'QR',
+    component: AppQR,
+    redirect: '/qr/preview',
+    children : [
+      {
+        path: 'preview',
+        name: 'QRPreview',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/qr/Preview.vue'),
+      },
+      {
+        path: 'proceed',
+        name: 'QRProceed',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/qr/Proceed.vue'),
+      },
+    ]
+  },
 ]
 
 const router = new VueRouter({

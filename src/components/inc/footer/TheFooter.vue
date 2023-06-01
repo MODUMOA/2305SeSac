@@ -6,7 +6,7 @@
           <router-link :to="{name : 'Main'}"><span>메인</span></router-link>
         </li>
         <li class="qr">
-          <a href="javascript:void(0);"><span>QR</span></a>
+          <router-link :to="{name : 'QR'}"><span>QR</span></router-link>
         </li>
         <li class="leaf">
           <router-link :to="{name : 'DashBoard'}"><span>배출현황</span></router-link>

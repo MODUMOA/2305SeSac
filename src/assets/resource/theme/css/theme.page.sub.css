@@ -134,3 +134,17 @@ background-image: url('../../common/img/9x6_000000_bottom_full_arrow_icon.png');
 .pagination_style_0 > li.paging_btn_single_page.to_first{background-image: url('../../common/img/pagination_style_0_double_left_arrow.png'); background-size: 11px 10px;}
 .pagination_style_0 > li.paging_btn_single_page.to_next{background-image: url('../../common/img/pagination_style_0_single_right_arrow.png'); background-size: 6px 10px;}
 .pagination_style_0 > li.paging_btn_single_page.to_last{background-image: url('../../common/img/pagination_style_0_double_right_arrow.png'); background-size: 11px 10px;}
+
+.qr_preview_wrap .qr_bg_con{padding: 38px 40px 37px; border-radius: 10px; background-color: #fff; overflow: hidden; font-size: 0; line-height: 0;}
+.qr_preview_wrap .qr_bg_con::after{width: 200px; content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-bottom: 5px solid #78B9A7; border-radius: 5px; overflow: hidden;}
+.qr_preview_wrap .qr_title{font-size: 20px; font-size: 2.0rem; line-height: 26px; line-height: 2.6rem; font-weight: 500; letter-spacing: -0.02em;}
+.qr_preview_wrap .qr_desc{font-size: 14px; font-size: 1.4rem; line-height: 20px; line-height: 2.0rem; font-weight: 300; letter-spacing: -0.02em; word-break: keep-all;}
+.qr_btn_con > a{box-shadow: 1px 2px 2px 2px #727272; display: inline-block; box-sizing: border-box; padding: 14px 55px 12px; background-color: #FFD83E; border-radius: 10px; font-size: 24px; font-size: 2.4rem; line-height: 30px; line-height: 3.0rem; font-weight: 500; letter-spacing: -0.02em;}
+.qr_proceed_top_con{z-index: 2; padding: 30px 20px; background-color: #fff; position: fixed; top: 0; left: 0;}
+.qr_proceed_top_con .qr_proceed_top_title{font-size: 36px; font-size: 3.6rem; line-height: 42px; line-height: 4.2rem; font-weight: 400; font-family: 'Inter', sans-serif;}
+.qr_proceed_timer_con{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 400; font-family: 'Inter', sans-serif;}
+.qr_proceed_timer_con .timer{font-size: 20px; font-size: 2.0rem; line-height: 26px; line-height: 2.6rem; vertical-align: bottom;}
+
+.qr_proceed_middle_con{padding-top: 200px; padding-left: 20px; padding-right: 20px;}
+.qr_proceed_bottom_con{position: fixed; bottom: 0; left: 0; background-color: #fff; padding: 30px 20px 27px;}
+.qr_proceed_desc{z-index: 2; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 400;}

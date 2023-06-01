@@ -17,6 +17,7 @@
     font-weight: 700;
     font-style: normal;
 }
+@import url('https://rsms.me/inter/inter.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 html, body{font-size: 10px; color: #000; font-family: 'GmarketSans', 'Roboto', sans-serif; letter-spacing: -0.0025em;}
