@@ -80,6 +80,18 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/notice/view/View.vue'),
       },
+      {
+        path: 'write',
+        name: 'noticeWrite',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/notice/write/Write.vue'),
+      },
+      {
+        path: 'update/:no',
+        name: 'noticeUpdate',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/notice/update/Update.vue'),
+      },
     ]
   },
   {

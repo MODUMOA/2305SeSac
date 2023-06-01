@@ -27,11 +27,16 @@
 
 
 /*input_style_0*/
-.input_style_0{width: 100%; padding: 5px 8px; box-sizing: border-box; border: 0px none; background-color: #E8F4F1; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em; color: #000; border-radius: 8px; }
+.input_style_0{width: 100%; padding: 5px 8px; box-sizing: border-box; border: 0px none; background-color: #E8F4F1; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em; color: #000; border-radius: 8px;}
 .input_style_0.bg_yellow{background-color: #FFEDA6;}
 
+.input_style_1{width: 100%; padding: 5px 8px; box-sizing: border-box; border: 2px solid #A2BEB6; overflow: hidden; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em; color: #000; border-radius: 8px;}
+.input_style_1::placeholder{color: #ADADAD;}
+
+.textarea_style_1{resize: none; appearance: none; height: 250px; width: 100%; border: 2px solid #A2BEB6; overflow: hidden; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em; color: #000; border-radius: 8px;}
+
 /*btn_style_0*/
-.btn_style_0{appearance: none; cursor: pointer; padding: 8px 8px 6px; border: 0px none; font-size: 11px; font-size: 1.1rem; line-height: 17px; line-height: 1.7rem; font-weight: 500; overflow: hidden; border-radius: 10px; color: #4B4B4B;}
+.btn_style_0{display: inline-block; appearance: none; cursor: pointer; padding: 8px 8px 6px; border: 0px none; font-size: 11px; font-size: 1.1rem; line-height: 17px; line-height: 1.7rem; font-weight: 500; overflow: hidden; border-radius: 10px; color: #4B4B4B;}
 .btn_style_0.bg_yellow{background-color: #FED018;}
 .btn_style_0.bg_green{background-color: #A7CEC3;}
 .btn_style_0.bg_grey{background-color: #A1A1A1;}
@@ -39,6 +44,14 @@
 .btn_style_0.white{color: #fff;}
 .btn_style_0.kakao{padding-top: 12px; padding-bottom: 12px; background-image: url('../../common/img/18x17_kakao_icon.png'); background-size: 18px 17px; background-repeat: no-repeat; background-position: left 10px center;}
 .btn_style_0.type_3{font-size: 13px; font-size: 1.3rem; line-height: 19px; line-height: 1.9rem;}
+
+.btn_style_1{display: inline-block; appearance: none; cursor: pointer; padding: 4px 18px 2px; border: 0px none; font-size: 11px; font-size: 1.1rem; line-height: 17px; line-height: 1.7rem; font-weight: 500; overflow: hidden; border-radius: 5px; color: #4B4B4B;}
+.btn_style_1.bg_yellow{background-color: #FED018;}
+.btn_style_1.bg_green{background-color: #A7CEC3;}
+.btn_style_1.bg_grey{background-color: #A1A1A1;}
+.btn_style_1.type_2{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; color: #000;}
+.btn_style_1.white{color: #fff;}
+.btn_style_1.type_3{font-size: 13px; font-size: 1.3rem; line-height: 19px; line-height: 1.9rem;}
 
 /*로그인 페이지*/
 .login_wrap .img_box{margin-top: -250px; margin-bottom: -250px;}
@@ -97,3 +110,7 @@
 .dashboard_chart > li .bar > span{display: block; height: 0; overflow: hidden; border-radius: 2px; width: 100%; background-color: #A7CEC3; transition: height 0.4s ease;}
 .dashboard_chart > li.today .bar > span{background-color: #254F43;}
 .dashboard_wrap .dashboard_contents_2_headline{font-size: 24px; font-size: 2.4rem; line-height: 30px; line-height: 3rem; font-weight: 500; letter-spacing: -0.02em;}
+
+.form_style_1_title{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em;}
+.form_style_1{border-bottom: 1px solid #000; padding-bottom: 20px; margin-bottom: 20px;}
+.form_style_1:last-child{margin-bottom: 0;}

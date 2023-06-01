@@ -27,6 +27,7 @@ header{position: fixed; top: 0; left: 0; background-color :#A7CEC3;  z-index: 10
 .click_header_con .bottom_con ul > li{display: block; text-align: right; margin-bottom: 15px;}
 .click_header_con .bottom_con ul > li:last-child{margin-bottom: 0;}
 .click_header_con .bottom_con ul > li > a{display: inline-block; box-sizing: border-box; font-size: 20px; font-size: 2.0rem; line-height: 26px; line-height: 2.6rem; font-weight: 500; color: #575757; background-repeat: no-repeat; padding-right: 32px;}
+.click_header_con .bottom_con ul > li > a.router-link-exact-active{color: #386C5D;}
 .click_header_con .bottom_con ul > li.home > a{background-image: url('../img/header_home_icon_inactive.png'); background-size: 18px 18px; background-position: right top 2px;}
 .click_header_con .bottom_con ul > li.home > a.router-link-exact-active{background-image: url('../img/header_home_icon_active.png');}
 .click_header_con .bottom_con ul > li.qr > a{background-image: url('../img/header_qr_icon_inactive.png'); background-size: 20px 18px; background-position: right top 2px;}
