@@ -18,6 +18,7 @@
 <script>
 import NoticeListItem from './ListItem.vue';
 
+import { getNoticeList } from '@/api/notice';
 
 export default {
   name: 'NoticeList',
@@ -27,29 +28,27 @@ export default {
   data() {
     return {
       lists : [],
+      page : 1,
+      maxCnt : 0,
+      perPage : 10,
     }
   },
+  methods : {
+    async getList() {
+      await getNoticeList(
+        this.page,
+        ({ data }) => {
+          this.lists = data;
+        },
+        ({ error }) => {
+          console.dir(error);
+        }
+      );
+    },
+  },
+
   created() {
-    this.lists = [
-      {
-      no : 1,
-      title : '승강기 정기 점검에 따른 일시 운행 중단 안내',
-      registDateStr : '23.05.30',
-      writerName : 'OO관리소',
-    },
-    {
-      no : 2,
-      title : '반려동물(애완견) 관련 주의사항 안내',
-      registDateStr : '23.05.30',
-      writerName : 'OO관리소',
-    },
-    {
-      no : 3,
-      title : '오피스텔 저층부 단수 안내문',
-      registDateStr : '23.05.30',
-      writerName : 'OO관리소',
-    }
-  ]
+    this.getList();
   }
 }
 </script>

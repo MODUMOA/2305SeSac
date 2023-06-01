@@ -73,6 +73,12 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/notice/list/List.vue'),
       },
+      {
+        path: 'view/:no',
+        name: 'noticeView',
+        component: () =>
+          import(/* webpackChunkName: "notice" */ '../components/notice/view/View.vue'),
+      },
     ]
   },
   {
