@@ -4,6 +4,7 @@ import AppMain from '../views/AppMain.vue'
 import AppNotice from '../views/AppNotice.vue'
 import AppUser from '../views/AppUser.vue'
 import AppTree from '../views/AppTree.vue'
+import AppPayment from '../views/AppPayment.vue'
 import AppDashBoard from '../views/AppDashBoard.vue'
 
 
@@ -129,6 +130,11 @@ const routes = [
     name: 'DashBoard',
     component: AppDashBoard
   },
+  {
+    path: '/payment',
+    name: 'payment',
+    component : AppPayment
+  }
 ]
 
 const router = new VueRouter({

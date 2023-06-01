@@ -114,3 +114,14 @@
 .form_style_1_title{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em;}
 .form_style_1{border-bottom: 1px solid #000; padding-bottom: 20px; margin-bottom: 20px;}
 .form_style_1:last-child{margin-bottom: 0;}
+
+.payment_list{margin-bottom: 25px; border-radius: 10px; background-color: #fff; overflow: hidden; padding: 7px 10px; box-shadow: 1px 2px 2px 2px #A7CEC3;}
+.payment_list:last-child{margin-bottom: 0;}
+.payment_list .payment_list_info_con{display: flex; justify-content: space-between; margin-bottom: 9px;}
+.payment_list .payment_list_info_con > span{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em;}
+.payment_detail_list_con{height: 21px; margin-bottom: 20px; overflow: hidden; transition: height 0.2s ease;}
+.payment_detail_list_con > li{display: flex; justify-content: space-between;}
+.payment_detail_list_con > li > span{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 300; letter-spacing: -0.02em;}
+.payment_list_btn_con > a{display: inline-block; box-sizing: border-box; padding-left: 13px; font-size: 11px; font-size: 1.1rem; line-height: 17px; line-height: 1.7rem; font-weight: 500; letter-spacing: -0.02em;
+background-image: url('../../common/img/9x6_000000_bottom_full_arrow_icon.png'); background-size: 9px 6px; background-repeat: no-repeat; background-position: left top 4px;}
+.payment_list_btn_con > a.active{background-image: url('../../common/img/9x6_000000_top_full_arrow_icon.png');}
