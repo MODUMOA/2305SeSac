@@ -79,3 +79,21 @@
 .view_style_0_wrap .view_style_0_info_con > span.date{margin-left: 10px; color: #575757;}
 .view_style_0_wrap .view_style_0_title{border-bottom: 1px solid #000; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em;}
 .view_style_0_wrap .view_style_0_desc{font-size: 15px; font-size: 1.5rem; line-height: 26px; line-height: 2.6rem; font-weight: 300; letter-spacing: -0.02em;}
+
+.dashboard_wrap{margin-bottom: 40px;}
+.dashboard_wrap:last-child{margin-bottom: 0;}
+.dashboard_wrap .dashboard_contents_1{background-color: #A7CEC3; border-radius: 20px; padding: 27px 20px 50px; margin-bottom: -30px;}
+.dashboard_wrap .dashboard_contents_1_title{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em; color: #fff;}
+.dashboard_wrap .dashboard_contents_2_con{background-color: #fff; border-radius: 20px; padding: 27px 20px 20px;}
+.dashboard_wrap .dashboard_contents_2{width: calc(100% + 17px); margin-left: -17px; display: flex; flex-wrap: wrap; align-items: stretch;}
+.dashboard_wrap .dashboard_contents_2_inner{padding-left: 17px; margin-top: 17px;}
+.dashboard_wrap .dashboard_contents_2_inner > div{background-color: #F3F3F3; border-radius: 10px; overflow: hidden; padding: 7px 10px 12px;}
+.dashboard_wrap .dashboard_contents_2_inner:first-child{margin-top: 0;}
+.dashboard_wrap .dashboard_contents_2_title{font-size: 12px; font-size: 1.2rem; line-height: 18px; line-height: 1.8rem; font-weight: 300; letter-spacing: -0.02em;}
+.dashboard_wrap .dashboard_contents_2_desc{font-size: 10px; font-size: 1.0rem; line-height: 16px; line-height: 1.6rem; font-weight: 300; letter-spacing: -0.02em;}
+.dashboard_chart{display: flex; justify-content: space-evenly; height: 80px;}
+.dashboard_chart > li{display: flex; flex-direction: column; justify-content: flex-end;}
+.dashboard_chart > li .bar{flex : 1; margin-bottom: 5px; display: flex; align-items: flex-end;}
+.dashboard_chart > li .bar > span{display: block; height: 0; overflow: hidden; border-radius: 2px; width: 100%; background-color: #A7CEC3; transition: height 0.4s ease;}
+.dashboard_chart > li.today .bar > span{background-color: #254F43;}
+.dashboard_wrap .dashboard_contents_2_headline{font-size: 24px; font-size: 2.4rem; line-height: 30px; line-height: 3rem; font-weight: 500; letter-spacing: -0.02em;}
