@@ -1,9 +1,14 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+import userStore from '@/store/modules/userStore';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  modules: {
+    userStore,
+  },
   state: {
   },
   getters: {
@@ -12,6 +17,5 @@ export default new Vuex.Store({
   },
   actions: {
   },
-  modules: {
-  }
+  
 })

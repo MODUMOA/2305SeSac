@@ -14,11 +14,17 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import GaugeBar from './GaugeBar.vue';
 import BadgeList from './BadgeList.vue';
 
+const userStore = 'userStore';
+
 export default {
   name: 'MainDashBoard',
-  components : {GaugeBar,BadgeList}
+  components : {GaugeBar,BadgeList},
+  methods : {
+    ...mapGetters(userStore, ['getUserIdx']),
+  }
 }
 </script>

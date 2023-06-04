@@ -12,7 +12,7 @@
           <router-link :to="{name : 'DashBoard'}"><span>배출현황</span></router-link>
         </li>
         <li class="card">
-          <router-link :to="{name : 'Main'}"><span>결제이력</span></router-link>
+          <router-link :to="{name : 'Payment'}"><span>결제이력</span></router-link>
         </li>
       </ul>
     </div>

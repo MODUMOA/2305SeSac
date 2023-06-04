@@ -14,10 +14,13 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+import {getList, getMyTrees} from '@/api/tree';
 import TheHeader from '@/components/inc/header/TheHeader.vue';
 import TheFooter from '@/components/inc/footer/TheFooter.vue';
 import TreeListItem from '@/components/tree/listItem.vue';
 
+const userStore = 'userStore';
 
 export default {
   name: 'AppTree',
@@ -25,50 +28,94 @@ export default {
   data(){
     return {
       lists : [],
+      myTrees : [],
+    }
+  },
+  methods : {
+    ...mapGetters(userStore, ['getUserIdx']),
+    async userGetList(){
+      await getList(
+        ({data}) => {
+          this.lists = data.list;
+          this.syncTrees();
+        },
+        (error) => {
+          console.dir(error);
+        }
+      )
+    },
+    async getUserTrees(userIdx){
+      await getMyTrees(
+        userIdx,
+        ({data}) => {
+          this.myTrees = data.list;
+        },
+        (error) => {
+          console.dir(error);
+        }
+      )
+    },
+    syncTrees() {
+      //보유한 나무가 있는 경우
+      if(this.myTrees.length > 0){
+        this.lists.map((item) => {
+          this.myTrees.map((tree) => {
+            if(item.treeIdx == tree.treeIdx){
+              item.activeStatus = true;
+              item.count = tree.count;
+            }
+          })
+        });
+      }
     }
   },
   created() {
+    const userIdx = this.getUserIdx();
+    this.getUserTrees(userIdx);
+    //this.userGetList();
+    
+
     this.lists = [
       {
-      no : 1,
+      treeIdx : 1,
       treeName : '상수리나무',
-      activeImg : 'sangsuri_icon_active.png',
-      inActiveImg : 'sangsuri_icon_inactive.png',
-      num : 2,
+      treeImg : 'sangsuri_icon_active.png',
+      treeInActiveImg : 'sangsuri_icon_inactive.png',
+      count : 2,
       weight : '15.5kg',
       activeStatus : true,
       lockStatus : false,
     },
     {
-      no : 2,
+      treeIdx : 2,
       treeName : '소나무',
-      activeImg : 'sonamu_icon_active.png',
-      inActiveImg : 'sonamu_icon_inactive.png',
+      treeImg : 'sonamu_icon_active.png',
+      treeInActiveImg : 'sonamu_icon_inactive.png',
       activeStatus : false,
       lockStatus : false,
     },
     {
-      no : 3,
+      treeIdx : 3,
       treeName : '소나무',
-      activeImg : 'sonamu_icon_active.png',
-      inActiveImg : 'sonamu_icon_inactive.png',
+      treeImg : 'sonamu_icon_active.png',
+      treeInActiveImg : 'sonamu_icon_inactive.png',
       activeStatus : false,
       lockStatus : false,
     },
     {
-      no : 4,
+      treeIdx : 4,
       treeName : '상수리나무',
-      activeImg : 'sangsuri_icon_active.png',
-      inActiveImg : 'sangsuri_icon_inactive.png',
+      treeImg : 'sangsuri_icon_active.png',
+      treeInActiveImg : 'sangsuri_icon_inactive.png',
       activeStatus : false,
       lockStatus : false,
     },
     {
-      no : 5,
+      treeIdx : 5,
       treeName : '소나무',
-      activeImg : 'sonamu_icon_active.png',
-      inActiveImg : 'sonamu_icon_inactive.png',
-      num : 3,
+      treeImg : 'sonamu_icon_active.png',
+      treeInActiveImg : 'sonamu_icon_inactive.png',
+      count : 3,
       weight : '9.2kg',
       activeStatus : true,
       lockStatus : false,
@@ -76,33 +123,33 @@ export default {
     {
       no : 6,
       treeName : '소나무',
-      activeImg : 'sonamu_icon_active.png',
-      inActiveImg : 'sonamu_icon_inactive.png',
+      treeImg : 'sonamu_icon_active.png',
+      treeInActiveImg : 'sonamu_icon_inactive.png',
       activeStatus : false,
       lockStatus : false,
     },
     {
-      no : 7,
+      treeIdx : 7,
       lockStatus : true,
     },
     {
-      no : 8,
+      treeIdx : 8,
       lockStatus : true,
     },
     {
-      no : 9,
+      treeIdx : 9,
       lockStatus : true,
     },
     {
-      no : 10,
+      treeIdx : 10,
       lockStatus : true,
     },
     {
-      no : 11,
+      treeIdx : 11,
       lockStatus : true,
     },
     {
-      no : 12,
+      treeIdx : 12,
       lockStatus : true,
     }
   ]

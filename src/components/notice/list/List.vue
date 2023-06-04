@@ -13,8 +13,8 @@
             ></notice-list-item>
     </ul>
     <ul class="col-12 pagination_style_0">
-      <li class="paging_btn_single_page to_first"></li>
-      <li class="paging_btn_single_page to_prev"></li>
+      <li class="paging_btn_single_page to_first" @click="moveToFirstGroup"></li>
+      <li class="paging_btn_single_page to_prev" @click="moveToPrevGroup"></li>
 
         <li class="paging_btn_page selected">
           <a href="javascript:void(0)">1</a>
@@ -31,8 +31,8 @@
         <li class="paging_btn_page">
           <a href="javascript:void(0)">5</a>
         </li>
-        <li class="paging_btn_single_page to_next"></li>
-        <li class="paging_btn_single_page to_last"></li>
+        <li class="paging_btn_single_page to_next" @click="moveToNextGroup"></li>
+        <li class="paging_btn_single_page to_last" @click="moveToLastGroup"></li>
     </ul>
   </div>
 </template>
@@ -55,6 +55,18 @@ export default {
       perPage : 10,
     }
   },
+  computed : {
+    displayedPageNumbers() {
+      let pageNumbers = [];
+      const lastPage = Math.ceil(this.max_article / this.articlePerPage);
+      const startPage = Math.max(Math.floor((this.page - 1) / 5) * 5 + 1, 1);
+      const endPage = Math.min(startPage + 4, lastPage);
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+      }
+      return pageNumbers;
+    },
+  },
   methods : {
     async getList() {
       await getNoticeList(
@@ -66,6 +78,24 @@ export default {
           console.dir(error);
         }
       );
+    },
+    moveToPrevGroup() {
+      const nextPage = Math.max(this.page - 5, 1);
+      this.page = nextPage;
+      this.getArticle();
+    },
+    moveToNextGroup() {
+      const lastPage = Math.ceil(this.max_article / this.articlePerPage);
+      const nextPage = Math.min(this.page + 5, lastPage);
+      this.page = nextPage;
+      this.getArticle();
+    },
+    moveToPage(pageNumber) {
+      const lastPage = Math.ceil(this.max_article / this.articlePerPage);
+      if (pageNumber >= 1 && pageNumber <= lastPage) {
+        this.page = pageNumber;
+        this.getArticle();
+      }
     },
   },
 

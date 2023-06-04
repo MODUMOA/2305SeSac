@@ -8,65 +8,53 @@ import AppPayment from '../views/AppPayment.vue'
 import AppQR from '../views/AppQR.vue'
 import AppDashBoard from '../views/AppDashBoard.vue'
 
+import store from '@/store';
+
 
 //import store from '@/store';
 
 Vue.use(VueRouter)
 
-// const onlyAuthUser = async (to, from, next) => {
-//   const checkUserInfo = store.getters['userStore/checkUserInfo'];
-//   const checkToken = store.getters['userStore/checkToken'];
-//   let token = sessionStorage.getItem('accessToken');
-//   console.log('로그인 처리 전', checkUserInfo, token);
+const onlyAuthUser = async (to, from, next) => {
+  const getUserInfo = store.getters['userStore/getUserInfo'];
+  const getIsLogin = store.getters['userStore/getIsLogin'];
+  //로그인이 안되어 있을 때
+  if (getUserInfo == null && !getIsLogin) {
+    alert('로그인이 필요한 페이지입니다');
+    // next({ name: "login" });
+    router.push({ name: 'UserLogin' });
+  } else {
+    //로그인이 되어있을 때
+    next();
+  }
+};
 
-//   //토큰 유효성 체크
-//   if (checkUserInfo != null && token) {
-//     await store.dispatch('userStore/getUserInfo', token);
-//   }
-//   console.log(checkToken);
-//   //로그인이 안되어 있을 때
-//   if (!checkToken || checkUserInfo === null) {
-//     alert('로그인이 필요한 페이지입니다..');
-//     // next({ name: "login" });
-//     router.push({ name: 'UserLogin' });
-//   } else {
-//     //로그인이 되어있을 때
-//     next();
-//   }
-// };
+const onlyAuthNotUser = async (to, from, next) => {
+  const getUserInfo = store.getters['userStore/getUserInfo'];
+  const getIsLogin = store.getters['userStore/getIsLogin'];
 
-// const onlyAuthNotUser = async (to, from, next) => {
-//   const checkUserInfo = store.getters['userStore/checkUserInfo'];
-//   const checkToken = store.getters['userStore/checkToken'];
-//   let token = sessionStorage.getItem('accessToken');
-
-//   //토큰 유효성 체크
-//   if (checkUserInfo != null && token) {
-//     await store.dispatch('userStore/getUserInfo', token);
-//   }
-//   //로그인이 안되어 있을 때
-//   if (!checkToken || checkUserInfo === null) {
-//     next();
-//   } else {
-//     //로그인이 되어있을 때
-//     alert('로그인시 사용 불가능한 페이지입니다.');
-//     router.push({ name: 'home' });
-//   }
-// };
+  //로그인이 안되어 있을 때
+  if (getUserInfo == null && !getIsLogin) {
+    next();
+  } else {
+    //로그인이 되어있을 때
+    alert('로그인시 사용 불가능한 페이지입니다.');
+    router.push({ name: 'Main' });
+  }
+};
 
 
 const routes = [
   {
     path: '/',
     name: 'Main',
+    beforeEnter: onlyAuthUser,
     component: AppMain
   },
   {
     path: '/notice',
     name: 'Notice',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    beforeEnter: onlyAuthUser,
     component: AppNotice,
     redirect: '/notice/list',
     children : [
@@ -104,18 +92,21 @@ const routes = [
       {
         path: 'login',
         name: 'UserLogin',
+        beforeEnter: onlyAuthNotUser,
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/user/Login.vue'),
       },
       {
         path: 'signUp',
         name: 'UserSignUp',
+        beforeEnter: onlyAuthNotUser,
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/user/SignUp.vue'),
       },
       {
         path: 'update',
         name: 'UserUpdate',
+        beforeEnter: onlyAuthUser,
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/user/Update.vue'),
       },
@@ -124,22 +115,26 @@ const routes = [
   {
     path: '/tree',
     name: 'Tree',
+    beforeEnter: onlyAuthUser,
     component: AppTree
   },
   {
     path: '/dashboard',
     name: 'DashBoard',
+    beforeEnter: onlyAuthUser,
     component: AppDashBoard
   },
   {
     path: '/payment',
-    name: 'payment',
+    name: 'Payment',
+    beforeEnter: onlyAuthUser,
     component : AppPayment
   },
   {
     path: '/qr',
     name: 'QR',
     component: AppQR,
+    beforeEnter: onlyAuthUser,
     redirect: '/qr/preview',
     children : [
       {

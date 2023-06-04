@@ -1,6 +1,6 @@
 <template>
   <li>
-    <span>{{ category }} : {{ weight }}</span><span>{{ price }}원</span>
+    <span>{{ category }} : {{ trashWeight }}g</span><span>{{ price }}원</span>
   </li>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   props: {
     order: Number,
     category : String,
-    weight : String,
+    trashWeight : Number,
     price : Number,
   }
 }

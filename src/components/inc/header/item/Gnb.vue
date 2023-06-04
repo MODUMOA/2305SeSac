@@ -20,7 +20,7 @@
         <router-link :to="{ name: 'DashBoard' }">실천현황</router-link>
       </li>
       <li class="card">
-        <router-link :to="{ name: 'Payment' }">결제내역</router-link>
+        <router-link :to="{ name: 'Payment' }">결제이력</router-link>
       </li>
     </ul>
   </nav>

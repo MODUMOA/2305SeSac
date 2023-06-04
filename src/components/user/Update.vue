@@ -51,16 +51,16 @@
     <the-footer></the-footer>
     <div v-if="openStatus" class="col-12 popup_style_1_wrap">
       <div class="col-12 popup_con">
-      <div class="col-12 popup_inner">
-        <div class="col-12 mb17 tc popup_title">비밀번호 확인</div>
-        <div class="col-12 mb27 pl20 pr20">
-          <input type="password" class="input_style_0"/>
-        </div>
-        <div class="col-12 tc popup_style_1_btn_con">
-          <div class="col-12 bg_point0 popup_style_1_btn" @click="close">확인</div>
+        <div class="col-12 popup_inner">
+          <div class="col-12 mb17 tc popup_title">비밀번호 확인</div>
+          <div class="col-12 mb27 pl20 pr20">
+            <input type="password" class="input_style_0"/>
+          </div>
+          <div class="col-12 tc popup_style_1_btn_con">
+            <div class="col-12 bg_point0 popup_style_1_btn" @click="close">확인</div>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
