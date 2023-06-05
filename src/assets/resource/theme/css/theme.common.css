@@ -1,6 +1,5 @@
 #app{background-color: #E8F4F1; float: left; width: 100%; min-height: 100vh; padding-top: 80px; padding-bottom: 80px; box-sizing: border-box;}
 
-
 .point0{color: #386C5D !important;}
 .bg_point0{background-color: #386C5D !important;}
 .border_point0{border-color: #386C5D !important;}
@@ -24,4 +23,3 @@
 .popup_style_1_wrap .popup_title {font-size: 25px; font-size: 2.5rem; line-height: 31px; line-height: 3.1rem; font-weight: 500; letter-spacing: -0.02em; padding-left: 20px; padding-right: 20px; word-break: keep-all;}
 .popup_style_1_wrap.type_2 .popup_title{color: #fff;}
 .popup_style_1_btn_con .popup_style_1_btn {padding-top: 7px; padding-bottom: 7px; cursor: pointer; font-size: 17px; font-size: 1.7rem; line-height: 23px; line-height: 2.3rem; font-weight: 500; letter-spacing: -0.02em; color: #fff; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;}
-

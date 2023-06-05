@@ -77,7 +77,7 @@ const routes = [
           import(/* webpackChunkName: "notice" */ '../components/notice/write/Write.vue'),
       },
       {
-        path: 'update/:no',
+        path: 'update/:noticeIdx',
         name: 'noticeUpdate',
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/notice/update/Update.vue'),

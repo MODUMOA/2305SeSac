@@ -15,21 +15,12 @@
     <ul class="col-12 pagination_style_0">
       <li class="paging_btn_single_page to_first" @click="moveToFirstGroup"></li>
       <li class="paging_btn_single_page to_prev" @click="moveToPrevGroup"></li>
-
-        <li class="paging_btn_page selected">
-          <a href="javascript:void(0)">1</a>
-        </li>
-        <li class="paging_btn_page">
-          <a href="javascript:void(0)">2</a>
-        </li>
-        <li class="paging_btn_page">
-          <a href="javascript:void(0)">3</a>
-        </li>
-        <li class="paging_btn_page">
-          <a href="javascript:void(0)">4</a>
-        </li>
-        <li class="paging_btn_page">
-          <a href="javascript:void(0)">5</a>
+      <li
+          v-for="(pageNumber, index) in displayedPageNumbers"
+          :key="index + '1'"
+          :class="[page === pageNumber ? 'paging_btn_page selected' : 'paging_btn_page']"
+        >
+          <a href="javascript:void(0)" @click="moveToPage(pageNumber)">{{ pageNumber }}</a>
         </li>
         <li class="paging_btn_single_page to_next" @click="moveToNextGroup"></li>
         <li class="paging_btn_single_page to_last" @click="moveToLastGroup"></li>
@@ -58,7 +49,7 @@ export default {
   computed : {
     displayedPageNumbers() {
       let pageNumbers = [];
-      const lastPage = Math.ceil(this.max_article / this.articlePerPage);
+      const lastPage = Math.ceil(this.maxCnt / this.articlePerPage);
       const startPage = Math.max(Math.floor((this.page - 1) / 5) * 5 + 1, 1);
       const endPage = Math.min(startPage + 4, lastPage);
       for (let i = startPage; i <= endPage; i++) {
@@ -73,6 +64,7 @@ export default {
         ({ data }) => {
           console.log(data);
           this.lists = data.result;
+          this.maxCnt = data.totalCnt;
         },
         ({ error }) => {
           console.dir(error);
@@ -80,32 +72,32 @@ export default {
       );
     },
     moveToFirstGroup() {
-      const nextPage = Math.max(this.page - 5, 1);
-      this.page = nextPage;
-      this.getArticle();
+      const firstPage = 1;
+      this.page = firstPage;
+      this.getList();
     },
     moveToPrevGroup() {
-      const nextPage = Math.max(this.page - 5, 1);
-      this.page = nextPage;
-      this.getArticle();
+      const prevPage = Math.max(this.page - 5, 1);
+      this.page = prevPage;
+      this.getList();
     },
     moveToNextGroup() {
-      const lastPage = Math.ceil(this.max_article / this.articlePerPage);
+      const lastPage = Math.ceil(this.maxCnt / this.perPage);
       const nextPage = Math.min(this.page + 5, lastPage);
       this.page = nextPage;
-      this.getArticle();
+      this.getList();
     },
     moveToLastGroup() {
-      const lastPage = Math.ceil(this.max_article / this.articlePerPage);
+      const lastPage = Math.ceil(this.maxCnt / this.perPage);
       const nextPage = Math.min(this.page + 5, lastPage);
       this.page = nextPage;
-      this.getArticle();
+      this.getList();
     },
     moveToPage(pageNumber) {
-      const lastPage = Math.ceil(this.max_article / this.articlePerPage);
+      const lastPage = Math.ceil(this.maxCnt / this.perPage);
       if (pageNumber >= 1 && pageNumber <= lastPage) {
         this.page = pageNumber;
-        this.getArticle();
+        this.getList();
       }
     },
   },
