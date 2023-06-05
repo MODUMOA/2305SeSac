@@ -1,11 +1,13 @@
 import http from './http';
+import http2 from './http2';
 
 const api = http;
+const api2 = http2;
 
 const path = '/qr';
 
 async function submitQR(param, success, fail){
-  await api.post(path + `/submitQR`, param).then(success).catch(fail);
+  await api2.post(`/userinfo`, param).then(success).catch(fail);
 }
 
 async function waitQR(QRCode, success, fail){

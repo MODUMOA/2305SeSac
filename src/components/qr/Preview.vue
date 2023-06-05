@@ -91,7 +91,7 @@ export default {
       console.log("QR 인식")
       console.log(this.QRCode);
 
-      const param = { qrCode: this.QRCode, userIdx: this.getUserIdx() };
+      const param = { userInfo: this.getUserIdx(), type: this.QRCode };
 
       await submitQR(
         param,
