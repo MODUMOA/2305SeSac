@@ -2,21 +2,18 @@
   <div class="col-12">
     <div class="col-12 qr_proceed_top_con">
       <div class="col-12 tc qr_proceed_top_title">
-        <div v-if="type === 'http://m.site.naver.com/19JU3'">
-        일반쓰레기 통
+        <div v-if="QRCode === 'http://m.site.naver.com/19JU3'">
+          일반쓰레기 통
         </div>
-        <div v-if="type === 'http://m.site.naver.com/19JVo'">
-        음식물쓰레기 통
+        <div v-if="QRCode === 'http://m.site.naver.com/19JVo'">
+          음식물쓰레기 통
         </div>
-        <div v-if="type === 'http://m.site.naver.com/19JW0'">
-        분리수거 통
-        </div>
-        <div v-else>
-        잘못된 QR 코드 입니다.
+        <div v-if="QRCode === 'http://m.site.naver.com/19JW0'">
+          분리수거 통
         </div>
       </div>
       <div class="col-12 tc qr_proceed_timer_con">
-        <span class="timer point1">{{proceedTimerVal}}</span>초 뒤에 통이 닫혀요
+        <span class="timer point1">{{ proceedTimerVal }}</span>초 뒤에 통이 닫혀요
       </div>
       <div class="col-12 tc qr_btn_con">
         <a href="javascript:void(0)">시간 연장</a>
@@ -43,17 +40,16 @@ export default {
   name: 'QRProceed',
   data() {
     return {
-      QRCode : this.$route.params.QRCode,
-      type : this.$route.params.type,
-      proceedTimerVal : 180,
+      QRCode: this.$route.params.QRCode,
+      proceedTimerVal: 180,
     }
   },
-  methods : {
+  methods: {
     async userWaitQR() {
       await waitQR(
         this.QRCode,
-        ({data}) => {
-          if(data.message == 'SUCCESS'){
+        ({ data }) => {
+          if (data.message == 'SUCCESS') {
             this.proceedTimerVal = 180;
           }
         },
@@ -63,23 +59,23 @@ export default {
       )
     },
     async userCompleteQR() {
-     await completeQR(
-      this.QRCode,
-      ({ data }) => {
-        if(data.message == 'SUCCESS'){
-          alert('버리기 완료했습니다');
-          this.$router.push({name : 'Main'});
+      await completeQR(
+        this.QRCode,
+        ({ data }) => {
+          if (data.message == 'SUCCESS') {
+            alert('버리기 완료했습니다');
+            this.$router.push({ name: 'Main' });
+          }
+        },
+        (error) => {
+          console.dir(error);
         }
-      },
-      (error) => {
-        console.dir(error);
-      }
-     )
+      )
     },
     proceedTimer() {
       setInterval(() => {
         this.proceedTimerVal--;
-        if(this.proceedTimerVal == 0){
+        if (this.proceedTimerVal == 0) {
           this.userCompleteQR();
         }
       }, 1000);
@@ -92,5 +88,8 @@ export default {
 </script>
 
 <style scope>
-#app{background-color: #D9D9D9; padding-top: 0; padding-bottom: 0;}
-</style>
+#app {
+  background-color: #D9D9D9;
+  padding-top: 0;
+  padding-bottom: 0;
+}</style>

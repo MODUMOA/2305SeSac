@@ -26,17 +26,17 @@
       아래 버튼으로 QR 아래에 나와있는 코드를 입력해주세요.
     </div>
     <div class="col-12 tc qr_btn_con">
-      <a href="javascript:void(0)">코드 입력</a>
+      <a href="javascript:void(0)" @click="inputCode()">코드 입력</a>
     </div>
-    <div v-if="openStatus" class="col-12 popup_style_1_wrap" @click="close">
+    <div v-if="openStatus" class="col-12 popup_style_1_wrap">
       <div class="col-12 popup_con">
         <div class="col-12 popup_inner">
           <div class="col-12 mb17 tc popup_title">코드 입력</div>
           <div class="col-12 mb27 pl20 pr20">
-            <input type="text" class="input_style_0" v-bind="QRCode" />
+            <input type="text" class="input_style_0" v-model="textCode" />
           </div>
           <div class="col-12 tc popup_style_1_btn_con">
-            <div class="col-12 bg_point0 popup_style_1_btn" @click="inputQR">확인</div>
+            <div class="col-12 bg_point0 popup_style_1_btn" @click="inputQR()">확인</div>
           </div>
         </div>
       </div>
@@ -59,13 +59,14 @@ export default {
       showCamera: false,
       openStatus: false,
       QRCode: null,
-      result: '',
-      error: ''
+      error: '',
+      textCode:null,
     }
   },
   watch: {
-    result() {
-      this.$router.push({ name: 'QRProceed', params: { type: this.result } });
+    QRCode() {
+      this.inputQR();
+      this.$router.push({ name: 'QRProceed', params: { QRCode: this.QRCode } });
     },
   },
   methods: {
@@ -78,6 +79,8 @@ export default {
       this.showCamera = !this.showCamera;
     },
     inputQR() {
+      this.QRCode = this.textCode;
+
       if (this.QRCode == null || this.QRCode == '') {
         alert("코드입력을 해주시기 바랍니다");
         return;
@@ -106,7 +109,7 @@ export default {
       )
     },
     onDecode(result) {
-      this.result = result
+      this.QRCode = result
     },
     async onInit(promise) {
       try {
@@ -114,6 +117,9 @@ export default {
       } catch (error) {
         this.error = `ERROR: Camera error (${error.name})`;
       }
+    }, 
+    inputCode() {
+      this.openStatus = true;
     },
   }
 }
