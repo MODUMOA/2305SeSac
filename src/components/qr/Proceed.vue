@@ -2,7 +2,18 @@
   <div class="col-12">
     <div class="col-12 qr_proceed_top_con">
       <div class="col-12 tc qr_proceed_top_title">
+        <div v-if="type === 'http://m.site.naver.com/19JU3'">
         일반쓰레기 통
+        </div>
+        <div v-if="type === 'http://m.site.naver.com/19JVo'">
+        음식물쓰레기 통
+        </div>
+        <div v-if="type === 'http://m.site.naver.com/19JW0'">
+        분리수거 통
+        </div>
+        <div v-else>
+        잘못된 QR 코드 입니다.
+        </div>
       </div>
       <div class="col-12 tc qr_proceed_timer_con">
         <span class="timer point1">{{proceedTimerVal}}</span>초 뒤에 통이 닫혀요
@@ -33,6 +44,7 @@ export default {
   data() {
     return {
       QRCode : this.$route.params.QRCode,
+      type : this.$route.params.type,
       proceedTimerVal : 180,
     }
   },
