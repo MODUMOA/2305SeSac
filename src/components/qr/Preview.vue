@@ -45,31 +45,31 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import { submitQR } from '@/api/qr';
-import { QrcodeStream } from 'vue-qrcode-reader'
+import { mapGetters } from "vuex";
+import { submitQR } from "@/api/qr";
+import { QrcodeStream } from "vue-qrcode-reader";
 
-const userStore = 'userStore';
+const userStore = "userStore";
 
 export default {
   components: { QrcodeStream },
-  name: 'QRPreview',
+  name: "QRPreview",
   data() {
     return {
       showCamera: false,
       openStatus: false,
       QRCode: null,
-      error: '',
+      error: "",
       textCode: null,
-    }
+    };
   },
   watch: {
     QRCode() {
-      this.inputQR();
+      this.submitQR(this.QRCode);
     },
   },
   methods: {
-    ...mapGetters(userStore, ['getUserIdx']),
+    ...mapGetters(userStore, ["getUserIdx"]),
     close() {
       this.openStatus = false;
     },
@@ -78,43 +78,40 @@ export default {
       this.showCamera = !this.showCamera;
     },
     inputQR() {
-      if(this.textCode != null){
-        this.QRCode = this.textCode;
-      }
-
-      if (this.QRCode == null || this.QRCode == '') {
+      if (this.textCode == null || this.textCode == "") {
         alert("코드입력을 해주시기 바랍니다");
         return;
       }
-      this.submitQR();
+      this.submitQR(this.textCode);
     },
-    async submitQR() {
-      console.log("QR 인식")
-      console.log(this.QRCode);
+    async submitQR(code) {
+      console.log("QR 인식");
 
-      const param = { userInfo: this.getUserIdx(), type: this.QRCode };
+      const param = { userInfo: this.getUserIdx(), type: code };
+      console.log(param);
 
       await submitQR(
         param,
         ({ data }) => {
+          console.log(data);
           //성공한 경우
-          if (data.message == "SUCCESS") {
-            this.$router.push({ name: 'QRProceed', params: { QRCode: this.QRCode } });
+          if (data == "SUCCESS") {
+            this.$router.push({ name: "QRProceed", params: { QRCode: code } });
           } else {
-            alert('유효하지 않은 QR코드입니다. 다시 한번 확인해주세요.');
+            alert("유효하지 않은 QR코드입니다. 다시 한번 확인해주세요.");
           }
         },
         (error) => {
           console.dir(error);
         }
-      )
+      );
     },
     onDecode(result) {
-      this.QRCode = result
+      this.QRCode = result;
     },
     async onInit(promise) {
       try {
-        await promise
+        await promise;
       } catch (error) {
         this.error = `ERROR: Camera error (${error.name})`;
       }
@@ -125,12 +122,12 @@ export default {
     stopPropagation(event) {
       event.stopPropagation(); // 이벤트 전파 중단
     },
-  }
-}
+  },
+};
 </script>
 
 <style scope>
 #app {
-  background-color: #A7CEC3;
+  background-color: #a7cec3;
 }
 </style>
