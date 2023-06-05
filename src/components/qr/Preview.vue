@@ -66,7 +66,6 @@ export default {
   watch: {
     QRCode() {
       this.inputQR();
-      this.$router.push({ name: 'QRProceed', params: { QRCode: this.QRCode } });
     },
   },
   methods: {
@@ -79,7 +78,9 @@ export default {
       this.showCamera = !this.showCamera;
     },
     inputQR() {
-      this.QRCode = this.textCode;
+      if(this.textCode != null){
+        this.QRCode = this.textCode;
+      }
 
       if (this.QRCode == null || this.QRCode == '') {
         alert("코드입력을 해주시기 바랍니다");
