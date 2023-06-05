@@ -28,9 +28,9 @@
     <div class="col-12 tc qr_btn_con">
       <a href="javascript:void(0)" @click="inputCode()">코드 입력</a>
     </div>
-    <div v-if="openStatus" class="col-12 popup_style_1_wrap">
+    <div v-if="openStatus" class="col-12 popup_style_1_wrap" @click="close">
       <div class="col-12 popup_con">
-        <div class="col-12 popup_inner">
+        <div class="col-12 popup_inner" @click="stopPropagation">
           <div class="col-12 mb17 tc popup_title">코드 입력</div>
           <div class="col-12 mb27 pl20 pr20">
             <input type="text" class="input_style_0" v-model="textCode" />
@@ -60,7 +60,7 @@ export default {
       openStatus: false,
       QRCode: null,
       error: '',
-      textCode:null,
+      textCode: null,
     }
   },
   watch: {
@@ -117,9 +117,12 @@ export default {
       } catch (error) {
         this.error = `ERROR: Camera error (${error.name})`;
       }
-    }, 
+    },
     inputCode() {
       this.openStatus = true;
+    },
+    stopPropagation(event) {
+      event.stopPropagation(); // 이벤트 전파 중단
     },
   }
 }
