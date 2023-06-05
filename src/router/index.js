@@ -65,7 +65,7 @@ const routes = [
           import(/* webpackChunkName: "notice" */ '../components/notice/list/List.vue'),
       },
       {
-        path: 'view/:no',
+        path: 'view/:noticeIdx',
         name: 'noticeView',
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/notice/view/View.vue'),
@@ -144,7 +144,7 @@ const routes = [
           import(/* webpackChunkName: "notice" */ '../components/qr/Preview.vue'),
       },
       {
-        path: 'proceed',
+        path: 'proceed/:QRCode',
         name: 'QRProceed',
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/qr/Proceed.vue'),

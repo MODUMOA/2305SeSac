@@ -5,7 +5,7 @@
         일반쓰레기 통
       </div>
       <div class="col-12 tc qr_proceed_timer_con">
-        <span class="timer point1">43</span>초 뒤에 통이 닫혀요
+        <span class="timer point1">{{proceedTimerVal}}</span>초 뒤에 통이 닫혀요
       </div>
       <div class="col-12 tc qr_btn_con">
         <a href="javascript:void(0)">시간 연장</a>
@@ -16,7 +16,7 @@
     </div>
     <div class="col-12 qr_proceed_bottom_con">
       <div class="col-12 mb17 tc qr_btn_con">
-        <a href="javascript:void(0)">다 배출 했어요</a>
+        <a href="javascript:void(0)" @click="userCompleteQR">분리수거 끝내기</a>
       </div>
       <div class="col-12 tc qr_proceed_desc">
         쓰레기통을 닫지 않아 발생하는 책임은 사용자에게 있습니다.
@@ -26,9 +26,56 @@
 </template>
 
 <script>
+import { waitQR, completeQR } from '@/api/qr';
 
 export default {
   name: 'QRProceed',
+  data() {
+    return {
+      QRCode : this.$route.params.QRCode,
+      proceedTimerVal : 180,
+    }
+  },
+  methods : {
+    async userWaitQR() {
+      await waitQR(
+        this.QRCode,
+        ({data}) => {
+          if(data.message == 'SUCCESS'){
+            this.proceedTimerVal = 180;
+          }
+        },
+        (error) => {
+          console.dir(error);
+        }
+      )
+    },
+    async userCompleteQR() {
+     await completeQR(
+      this.QRCode,
+      ({ data }) => {
+        if(data.message == 'SUCCESS'){
+          alert('버리기 완료했습니다');
+          this.$router.push({name : 'Main'});
+        }
+      },
+      (error) => {
+        console.dir(error);
+      }
+     )
+    },
+    proceedTimer() {
+      setInterval(() => {
+        this.proceedTimerVal--;
+        if(this.proceedTimerVal == 0){
+          this.userCompleteQR();
+        }
+      }, 1000);
+    },
+  },
+  created() {
+    this.proceedTimer();
+  }
 }
 </script>
 

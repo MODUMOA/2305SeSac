@@ -70,14 +70,19 @@ export default {
   methods : {
     async getList() {
       await getNoticeList(
-        this.page,
         ({ data }) => {
-          this.lists = data;
+          console.log(data);
+          this.lists = data.result;
         },
         ({ error }) => {
           console.dir(error);
         }
       );
+    },
+    moveToFirstGroup() {
+      const nextPage = Math.max(this.page - 5, 1);
+      this.page = nextPage;
+      this.getArticle();
     },
     moveToPrevGroup() {
       const nextPage = Math.max(this.page - 5, 1);
@@ -85,6 +90,12 @@ export default {
       this.getArticle();
     },
     moveToNextGroup() {
+      const lastPage = Math.ceil(this.max_article / this.articlePerPage);
+      const nextPage = Math.min(this.page + 5, lastPage);
+      this.page = nextPage;
+      this.getArticle();
+    },
+    moveToLastGroup() {
       const lastPage = Math.ceil(this.max_article / this.articlePerPage);
       const nextPage = Math.min(this.page + 5, lastPage);
       this.page = nextPage;

@@ -13,7 +13,7 @@
       수거함은 QR인식 후 <span class="fontweight500">3분</span>이 지나면 잠깁니다.
     </div>
     <div class="col-12 mb27 tc qr_btn_con">
-      <a href="javascript:void(0)">QR 인식하기</a>
+      <a href="javascript:void(0)" @click="scanQR()">QR 인식하기</a>
     </div>
     <div class="col-12 mb17 qr_desc">
       QR 인식이 <span class="warning fontweight500">안될</span> 경우<br/>
@@ -22,15 +22,15 @@
     <div class="col-12 tc qr_btn_con">
       <a href="javascript:void(0)">코드 입력</a>
     </div>
-    <div v-if="openStatus" class="col-12 popup_style_1_wrap">
+    <div v-if="openStatus" class="col-12 popup_style_1_wrap" @click="close">
       <div class="col-12 popup_con">
         <div class="col-12 popup_inner">
           <div class="col-12 mb17 tc popup_title">코드 입력</div>
           <div class="col-12 mb27 pl20 pr20">
-            <input type="password" class="input_style_0"/>
+            <input type="text" class="input_style_0" v-bind="QRCode"/>
           </div>
           <div class="col-12 tc popup_style_1_btn_con">
-            <div class="col-12 bg_point0 popup_style_1_btn" @click="close">확인</div>
+            <div class="col-12 bg_point0 popup_style_1_btn" @click="inputQR">확인</div>
           </div>
         </div>
       </div>
@@ -39,17 +39,54 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { submitQR } from '@/api/qr';
+
+const userStore = 'userStore';
 
 export default {
   name: 'QRPreview',
   data() {
     return {
       openStatus : false,
+      QRCode : null,
     }
   },
   methods : {
+    ...mapGetters(userStore, ['getUserIdx']),
     close() {
       this.openStatus = false;
+    },
+    scanQR(){
+      console.log("카메라 인식 시작");
+    },
+    inputQR() {
+      if(this.QRCode == null || this.QRCode == ''){
+        alert("코드입력을 해주시기 바랍니다");
+        return;
+      }
+      this.submitQR();
+    },
+    async submitQR(){
+      console.log("QR 인식")
+      console.log(this.QRCode);
+
+      const param = {qrCode : this.QRCode, userIdx : this.getUserIdx()};
+
+      await submitQR(
+        param,
+        ({data}) => {
+          //성공한 경우
+          if(data.message == "SUCCESS"){
+            this.$router.push({name : 'QRProceed', params : {QRCode : this.QRCode}});
+          } else {
+            alert('유효하지 않은 QR코드입니다. 다시 한번 확인해주세요.');
+          }
+        },
+        (error) => {
+          console.dir(error);
+        }
+      )
     }
   }
 }

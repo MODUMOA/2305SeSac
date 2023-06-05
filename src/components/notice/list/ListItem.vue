@@ -2,10 +2,10 @@
   <li>
     <div class="col-12 notice_list_info_con">
       <span>{{ writerName }}</span>
-      <span>{{ registDateStr }}</span>
+      <span>{{ date }}</span>
     </div>
     <div class="col-12 notice_list_title">
-      <router-link :to="'/notice/view/' + no">{{ title }}</router-link>
+      <router-link :to="'/notice/view/' + noticeIdx">{{ noticeTitle }}</router-link>
     </div>
   </li>
 </template>
@@ -14,10 +14,10 @@
 export default {
   name: 'NoticeListItem',
   props: {
-    no: Number,
-    title: String,
+    noticeIdx: Number,
+    noticeTitle: String,
     writerName: String,
-    registDateStr: String,
+    date: String,
   }
 }
 </script>
