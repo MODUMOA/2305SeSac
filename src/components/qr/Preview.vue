@@ -77,6 +77,9 @@ export default {
       console.log("카메라 인식 시작");
       this.showCamera = !this.showCamera;
     },
+    inputCode() {
+      this.openStatus = true;
+    },
     inputQR() {
       if (this.textCode == null || this.textCode == "") {
         alert("코드입력을 해주시기 바랍니다");
@@ -106,7 +109,7 @@ export default {
           //성공한 경우
           if (data == "SUCCESS") {
             this.$router.push({ name: "QRProceed", params: { QRCode: code } });
-          } else {
+          } else {``
             alert("유효하지 않은 QR코드입니다. 다시 한번 확인해주세요.");
           }
         },
@@ -124,9 +127,6 @@ export default {
       } catch (error) {
         this.error = `ERROR: Camera error (${error.name})`;
       }
-    },
-    inputCode() {
-      this.openStatus = true;
     },
     stopPropagation(event) {
       event.stopPropagation(); // 이벤트 전파 중단

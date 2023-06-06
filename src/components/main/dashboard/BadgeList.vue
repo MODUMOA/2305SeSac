@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 main_badge_list_con">
-    <div class="col-12 mb20 main_badge_list_title_con"><span>이번주의 나무</span><router-link :to="{name: 'home'}" class="btn_style_0 bg_green white">더보기 ></router-link></div>
-    <ul v-if="list.length > 0" class="col-12 main_badge_list">
+    <div class="col-12 mb20 main_badge_list_title_con"><span>이번주의 나무</span><router-link :to="{name: 'Tree'}" class="btn_style_0 bg_green white">더보기 ></router-link></div>
+    <ul v-if="lists.length > 0" class="col-12 main_badge_list">
       <li v-for="list in lists"
               :key="list.idx"
               v-bind="list">
