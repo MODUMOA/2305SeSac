@@ -97,8 +97,8 @@ export default {
     {
       treeIdx : 3,
       treeName : '백합나무',
-      treeImg : 'baekhop_icon_active.png',
-      treeInActiveImg : 'baekhop_icon_inactive.png',
+      treeImg : 'baekhap_namu_icon_active.png',
+      treeInActiveImg : 'baekhap_icon_inactive.png',
       count : 1,
       weight : '39.6kg',
       activeStatus : true,

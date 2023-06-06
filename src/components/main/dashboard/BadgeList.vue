@@ -5,7 +5,7 @@
       <li v-for="list in lists"
               :key="list.idx"
               v-bind="list">
-              <img :src="this.$resource.themeRes.img(`${list.treeImg}`)" :alt="list.treeName"/>
+              <img :src="$resource.themeRes.img(`${list.treeImg}`)" :alt="list.treeName"/>
         <span>{{list.treeName}}</span>
       </li>
     </ul>
@@ -32,21 +32,21 @@ export default {
   },
   methods: {
     ...mapGetters(userStore, ['getUserIdx']),
-    async userGetRecentTrees(userIdx){
+    async userGetRecentTrees(){
       await getRecentTrees(
-        userIdx,
         ({ data }) => {
-          this.lists = data.list;
+          this.lists = data.result;
         },
         (error) => {
           console.dir(error);
         }
       )
+      console.log(this.lists);
     },
   },
   created() {
-    const userIdx = this.getUserIdx();
-    this.userGetRecentTrees(userIdx);      
+    // const userIdx = this.getUserIdx();
+    this.userGetRecentTrees();      
   }
 }
 </script>
