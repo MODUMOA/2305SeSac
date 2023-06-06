@@ -2,9 +2,9 @@
   <div class="col-12">
     <div class="col-12 qr_proceed_top_con">
       <div class="col-12 tc qr_proceed_top_title">
-        <div v-if="QRCode === 'http://m.site.naver.com/19JU3'">일반쓰레기 통</div>
-        <div v-if="QRCode === 'http://m.site.naver.com/19JVo'">음식물쓰레기 통</div>
-        <div v-if="QRCode === 'http://m.site.naver.com/19JW0'">분리수거 통</div>
+        <div v-if="QRCode === '1'">일반쓰레기 통</div>
+        <div v-if="QRCode === '2'">음식물쓰레기 통</div>
+        <div v-if="QRCode === '3'">분리수거 통</div>
       </div>
       <div class="col-12 tc qr_proceed_timer_con">
         <span class="timer point1">{{ proceedTimerVal }}</span

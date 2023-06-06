@@ -91,11 +91,11 @@ export default {
       console.log("QR 인식");
 
       // 23.06.06 Type 강제 convert 추가 ...
-      if (code == "http://m.site.naver.com/19JU3") {
+      if (code == "http://m.site.naver.com/19JU3" || code == "A3B9C7") {
         code = 1;
-      } else if (code == "http://m.site.naver.com/19JVo") {
+      } else if (code == "http://m.site.naver.com/19JVo" || code == "X5Y2Z1") {
         code = 2;
-      } else if (code == "http://m.site.naver.com/19JW0") {
+      } else if (code == "http://m.site.naver.com/19JW0" || code == "M8N6P4") {
         code = 3;
       }
 
