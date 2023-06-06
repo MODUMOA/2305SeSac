@@ -2,26 +2,19 @@
   <div class="col-12">
     <div class="col-12 qr_proceed_top_con">
       <div class="col-12 tc qr_proceed_top_title">
-        <div v-if="QRCode === 'http://m.site.naver.com/19JU3'">
-          일반쓰레기 통
-        </div>
-        <div v-if="QRCode === 'http://m.site.naver.com/19JVo'">
-          음식물쓰레기 통
-        </div>
-        <div v-if="QRCode === 'http://m.site.naver.com/19JW0'">
-          분리수거 통
-        </div>
+        <div v-if="QRCode === 'http://m.site.naver.com/19JU3'">일반쓰레기 통</div>
+        <div v-if="QRCode === 'http://m.site.naver.com/19JVo'">음식물쓰레기 통</div>
+        <div v-if="QRCode === 'http://m.site.naver.com/19JW0'">분리수거 통</div>
       </div>
       <div class="col-12 tc qr_proceed_timer_con">
-        <span class="timer point1">{{ proceedTimerVal }}</span>초 뒤에 통이 닫혀요
+        <span class="timer point1">{{ proceedTimerVal }}</span
+        >초 뒤에 통이 닫혀요
       </div>
       <div class="col-12 tc qr_btn_con">
         <a href="javascript:void(0)">시간 연장</a>
       </div>
     </div>
-    <div class="col-12 tc qr_proceed_middle_con">
-      각 쓰레기통마다 안내할 화면
-    </div>
+    <div class="col-12 tc qr_proceed_middle_con">각 쓰레기통마다 안내할 화면</div>
     <div class="col-12 qr_proceed_bottom_con">
       <div class="col-12 mb17 tc qr_btn_con">
         <a href="javascript:void(0)" @click="userCompleteQR">분리수거 끝내기</a>
@@ -34,43 +27,42 @@
 </template>
 
 <script>
-import { waitQR, completeQR } from '@/api/qr';
+import { waitQR, completeQR } from "@/api/qr";
 
 export default {
-  name: 'QRProceed',
+  name: "QRProceed",
   data() {
     return {
       QRCode: this.$route.params.QRCode,
       proceedTimerVal: 180,
-    }
+    };
   },
   methods: {
     async userWaitQR() {
       await waitQR(
         this.QRCode,
         ({ data }) => {
-          if (data.message == 'SUCCESS') {
+          if (data.message == "SUCCESS") {
             this.proceedTimerVal = 180;
           }
         },
         (error) => {
           console.dir(error);
         }
-      )
+      );
     },
     async userCompleteQR() {
       await completeQR(
-        this.QRCode,
         ({ data }) => {
-          if (data.message == 'SUCCESS') {
-            alert('버리기 완료했습니다');
-            this.$router.push({ name: 'Main' });
+          if (data == "SUCCESS") {
+            alert("버리기 완료했습니다");
+            this.$router.push({ name: "Main" });
           }
         },
         (error) => {
           console.dir(error);
         }
-      )
+      );
     },
     proceedTimer() {
       setInterval(() => {
@@ -83,13 +75,14 @@ export default {
   },
   created() {
     this.proceedTimer();
-  }
-}
+  },
+};
 </script>
 
 <style scope>
 #app {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   padding-top: 0;
   padding-bottom: 0;
-}</style>
+}
+</style>
