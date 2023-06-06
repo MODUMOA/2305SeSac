@@ -28,7 +28,6 @@ const userStore = {
     SET_USER_INFO: (state, userInfo) => {
       state.isLogin = true;
       state.userInfo = userInfo;
-      localStorage.setItem('userInfo', JSON.stringify(userInfo));
     },
   },
   actions: {
@@ -40,7 +39,6 @@ const userStore = {
             //성공한 경우
             commit('SET_USER_INFO', data.result);
             commit('SET_IS_LOGIN_ERROR', false);
-            localStorage.setItem('isLogin', true);
           } else {
             commit('SET_IS_LOGIN', false);
             commit('SET_IS_LOGIN_ERROR', true);
