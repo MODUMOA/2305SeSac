@@ -87,6 +87,15 @@ export default {
     async submitQR(code) {
       console.log("QR 인식");
 
+      // 23.06.06 Type 강제 convert 추가 ...
+      if (code == "http://m.site.naver.com/19JU3") {
+        code = 1;
+      } else if (code == "http://m.site.naver.com/19JVo") {
+        code = 2;
+      } else if (code == "http://m.site.naver.com/19JW0") {
+        code = 3;
+      }
+
       const param = { userInfo: this.getUserIdx(), type: code };
       console.log(param);
 
