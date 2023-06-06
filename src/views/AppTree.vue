@@ -105,7 +105,7 @@ export default {
       lockStatus : false,
     },
     {
-      treeIdx : 5,
+      treeIdx : 4,
       treeName : '소나무',
       treeImg : 'sonamu_icon_active.png',
       treeInActiveImg : 'sonamu_icon_inactive.png',
@@ -115,20 +115,12 @@ export default {
       lockStatus : false,
     },
     {
-      treeIdx : 4,
-      treeName : '상수리나무',
-      treeImg : 'sangsuri_icon_active.png',
-      treeInActiveImg : 'sangsuri_icon_inactive.png',
-      activeStatus : false,
-      lockStatus : false,
+      treeIdx : 5,
+      lockStatus : true,
     },
     {
       no : 6,
-      treeName : '소나무',
-      treeImg : 'sonamu_icon_active.png',
-      treeInActiveImg : 'sonamu_icon_inactive.png',
-      activeStatus : false,
-      lockStatus : false,
+      lockStatus : true,
     },
     {
       treeIdx : 7,
