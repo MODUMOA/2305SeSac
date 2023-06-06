@@ -41,7 +41,6 @@ export default {
           console.dir(error);
         }
       )
-      console.log(this.lists);
     },
   },
   created() {
