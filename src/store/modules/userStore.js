@@ -3,12 +3,9 @@ import { login, logout } from '@/api/user';
 const userStore = {
   namespaced: true,
   state: {
-    isLogin: true,
+    isLogin: false,
     isLoginError: false,
-    userInfo: {
-      userIdx : 1,
-      userName : '정민',
-    },
+    userInfo: null,
   },
   getters: {
     getUserInfo: function (state) {
@@ -38,7 +35,6 @@ const userStore = {
       await login(
         user,
         ({ data }) => {
-          console.dir(data);
           if (data.message == "SUCCESS") {
             //성공한 경우
             commit('SET_USER_INFO', data.result);

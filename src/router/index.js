@@ -57,7 +57,7 @@ const routes = [
     beforeEnter: onlyAuthUser,
     component: AppNotice,
     redirect: '/notice/list',
-    children : [
+    children: [
       {
         path: 'list',
         name: 'noticeList',
@@ -88,7 +88,7 @@ const routes = [
     path: '/user',
     name: 'User',
     component: AppUser,
-    children : [
+    children: [
       {
         path: 'login',
         name: 'UserLogin',
@@ -128,7 +128,7 @@ const routes = [
     path: '/payment',
     name: 'Payment',
     beforeEnter: onlyAuthUser,
-    component : AppPayment
+    component: AppPayment
   },
   {
     path: '/qr',
@@ -136,7 +136,7 @@ const routes = [
     component: AppQR,
     beforeEnter: onlyAuthUser,
     redirect: '/qr/preview',
-    children : [
+    children: [
       {
         path: 'preview',
         name: 'QRPreview',
@@ -148,6 +148,7 @@ const routes = [
         name: 'QRProceed',
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/qr/Proceed.vue'),
+        props: true,
       },
     ]
   },
