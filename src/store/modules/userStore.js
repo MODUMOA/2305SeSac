@@ -11,6 +11,9 @@ const userStore = {
     getUserInfo: function (state) {
       return state.userInfo;
     },
+    getUserName: function(state){
+      return state.userInfo.userName;
+    },
     getUserIdx : function(state){
       return state.userInfo.userIdx;
     },
