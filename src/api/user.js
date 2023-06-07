@@ -32,8 +32,12 @@ async function findPw(user, success, fail) {
   await api.post(path + `/findPw`, JSON.stringify(user)).then(success).catch(fail);
 }
 
+async function checkingPassword(param, success, fail){
+  await api.post(path + `/check`, param).then(success).catch(fail);
+}
+
 async function update(user, success, fail) {
   await api.put(path + `/update`, user).then(success).catch(fail);
 }
 
-export { checkId, signUp, getInfo, login, logout, findId, findPw, update };
+export { checkId, signUp, getInfo, login, logout, findId, findPw, checkingPassword, update };

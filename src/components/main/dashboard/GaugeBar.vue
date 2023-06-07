@@ -2,7 +2,7 @@
   <div class="col-12 mb30">
     <div class="col-12 main_dashboard_contents_2_title">
         현재 <span class="point0">{{ userCurRank }}</span> 등급<br/>
-        <span class="point0">{{ userNextRank }}</span>까지 {{100 - this.percent}}% 남았습니다
+        <span class="point0">{{ userNextRank }}</span>까지 {{100 - this.exp}}% 남았습니다
     </div>
     <div class="col-12 main_dashboard_gauge_bar_con">
        <div class="col-12 img_box">
@@ -12,7 +12,7 @@
        <div class="col-12 main_dashboard_gauge_bar">
         <div class="col-12 main_dashboard_gauge_bar_bg"></div>
         <div class="col-12 main_dashboard_gauge_bar_progress" ref="mainDashboardProgress"></div>
-        <div class="col-12 main_dashboard_gauge_bar_progress_num_con"><span class="point0" ref="mainDashboardProgressNum">{{this.percent}}</span></div>
+        <div class="col-12 main_dashboard_gauge_bar_progress_num_con"><span class="point0" ref="mainDashboardProgressNum">{{this.exp}}</span></div>
        </div>
     </div>
   </div>
@@ -24,7 +24,7 @@ export default {
   name: 'GaugeBar',
   props : {
     level : Number,
-    percent : Number,
+    exp : Number,
   },
   data() {
     return {
@@ -32,12 +32,29 @@ export default {
       userNextRank : null,
     }
   },
+  watch : {
+    level() {
+      switch(this.level){
+        case 0 :
+          this.userCurRank = "정원";
+          this.userNextRank = "과수원";
+          break;
+        case 1 :
+          this.userCurRank = "과수원";
+          this.userNextRank = "숲";
+          break;
+        case 2 :
+          this.userCurRank = "숲";
+          this.userNextRank = "산";
+          break;
+      }  
+    }
+  },
   mounted() {
     setTimeout(() => {
-      this.$refs.mainDashboardProgress.style.width = this.percent + '%';
-      this.$refs.mainDashboardProgressNum.style.paddingLeft = this.percent + '%'; 
+      this.$refs.mainDashboardProgress.style.width = this.exp + '%';
+      this.$refs.mainDashboardProgressNum.style.paddingLeft = this.exp + '%'; 
     }, 500);
-    
   },
   created() {
     switch(this.level){

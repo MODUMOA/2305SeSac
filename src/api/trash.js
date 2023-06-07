@@ -9,8 +9,8 @@ const path = '/trash';
  * @param {userIdx, trashIdx} success 
  * @param {*} fail 
  */
-async function getList(param, success, fail){
-  await api.get(path, param).then(success).catch(fail); 
+async function getTrash(param, success, fail){
+  await api.get(path, { params: param }).then(success).catch(fail); 
 }
 
-export { getList };
+export { getTrash };

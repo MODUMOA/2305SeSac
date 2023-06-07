@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="col-12 main_dashboard_contents_2">
-      <Gauge-bar :level="dashboardInfo.level" :percent="dashboardInfo.exp"></Gauge-bar>
+      <Gauge-bar :info="dashboardInfo" v-bind="dashboardInfo"></Gauge-bar>
       <Badge-list></Badge-list>
     </div>
   </div>

@@ -18,11 +18,11 @@
             <label for="loginPassword">비밀번호</label>
           </div>
           <div class="col-12 input_box">
-            <input type="password" class="input_style_0 bg_yellow" id="loginPassword" v-model="user.userPwd"/>
+            <input type="password" class="input_style_0 bg_yellow" id="loginPassword" v-model="user.userPwd" @keyup.enter="loginUser"/>
           </div>
         </div>
       </div>
-      <button class="col-12 tc mb30 btn_style_0 type_2 bg_yellow"  @click="loginUser">
+      <button class="col-12 tc mb30 btn_style_0 type_2 bg_yellow" @click="loginUser">
         로그인
       </button>
       <ul class="col-12 mb20 login_info_list_con">
