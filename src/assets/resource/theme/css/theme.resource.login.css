@@ -1,4 +1,4 @@
-.login_wrap{min-height: calc(100vh - 230px); display: flex; align-items: center;}
+.login_wrap{min-height: 100vh; display: flex; flex-wrap: wrwap; align-items: center;}
 .login_title{font-size: 30px; font-size: 3.0rem; line-height: 36px; line-height: 3.6rem; font-weight: 600; letter-spacing: -0.02em; border-bottom: 2px solid rgba(0,0,0,0.4);}
 .login_addr_list_con > li{position: relative; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 200; padding-left: 18px; margin-bottom: 5px;}
 .login_addr_list_con > li::after{content : ''; position: absolute; top: 11px; left: 0; width: 8px; border-bottom: 1px solid #17181d;}

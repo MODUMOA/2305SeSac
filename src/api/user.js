@@ -12,6 +12,10 @@ async function signUp(user, success, fail) {
   await api.post(path + `/signUp`, JSON.stringify(user)).then(success).catch(fail);
 }
 
+async function getInfo(userIdx, success, fail){
+  await api.get(path + `/info/${userIdx}`).then(success).catch(fail);
+}
+
 async function login(user, success, fail) {
   await api.post(path + `/login`, JSON.stringify(user)).then(success).catch(fail);
 }
@@ -32,4 +36,4 @@ async function update(user, success, fail) {
   await api.put(path + `/update`, user).then(success).catch(fail);
 }
 
-export { checkId, signUp, login, logout, findId, findPw, update };
+export { checkId, signUp, getInfo, login, logout, findId, findPw, update };
