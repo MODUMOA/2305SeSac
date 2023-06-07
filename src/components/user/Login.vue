@@ -56,7 +56,7 @@ export default {
   methods: {
     ...mapActions('userStore', ['userConfirm']),
     async loginUser() {
-      this.userConfirm(this.user);
+      await this.userConfirm(this.user);
       this.$router.push({name:"Main"});
     },
   },
