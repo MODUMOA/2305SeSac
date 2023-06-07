@@ -46,7 +46,7 @@
               <label for="updateNickName">닉네임</label>
             </div>
             <div class="col-12 input_box">
-              <input type="text" class="input_style_0" id="updateNickName" v-model="user.nickName"/>
+              <input type="text" class="input_style_0" id="updateNickName" v-model="user.nickname"/>
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default {
         id : '',
         password : '',
         userName : '',
-        nickName : '',
+        nickname : '',
       },
     }
   },
@@ -179,6 +179,7 @@ export default {
       }
 
       await update(
+        this.user.userIdx,
         this.user,
         ({data}) => {
           if(data.result){
