@@ -9,7 +9,7 @@
         <div class="payment_status">
           <span v-if="status == 0" class="bg_warning">미결제</span>
           <span v-else-if="status == 1" class="wait">결제대기</span>
-          <span v-else-if="status == 2" class="point0">결제완료</span>
+          <span v-else-if="status == 2" class="bg_point0">결제완료</span>
         </div>
       </span>
       <span>총 {{ totalPrice }}원</span>
@@ -33,27 +33,22 @@
     >
       <span>결제하기</span>
     </a>
-    <div v-if="openStatus" class="col-12 popup_style_1_wrap type_2" @click="close">
+    <div v-if="openStatus" class="col-12 popup_style_1_wrap type_2">
       <div class="col-12 popup_con">
         <div class="col-12 popup_inner">
-          <div class="col-12 mb17 popup_title bg_point0">
+          <div class="col-12 mb17 pt10 pb8 tc popup_title bg_point2">
             결제수단 선택
-            <a href="javascript:void(0)" class="popup_close_btn" @click="close">닫기 버튼</a>
           </div>
-          <ul class="col-12 tc payment_select_list">
-            <li>
-              <a href="javascript:void(0)" @click="userUpdateStatus(2)">
-                <img src="" alt="" />
-                <span>카드</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)" @click="userUpdateStatus(1)">
-                <img src="" alt="" />
-                <span>무통장 입금</span>
-              </a>
-            </li>
-          </ul>
+          <div class="col-12 mb20 tc select_style_0_con">
+            <select name="paymentSelect" id="paymentSelect" class="select_style_0" v-model="paymentSelectVal">
+              <option value="1">무통장 입금</option>
+              <option value="2">카드</option>
+            </select>
+          </div>
+          <div class="col-12 tc">
+            <a href="javascript:void(0)" class="btn_style_0 bg_grey white type_3 more_padding mr10" @click="close">취소</a>
+            <a href="javascript:void(0)" class="btn_style_0 bg_point2 white type_3 more_padding" @click="userUpdateStatus">확인</a>
+          </div>
         </div>
       </div>
     </div>
@@ -74,6 +69,7 @@ export default {
     return {
       openStatus: false,
       toggleStatus: false,
+      paymentSelectVal : "1",
     };
   },
   props: {
@@ -103,8 +99,8 @@ export default {
     openPaymentPopup() {
       this.openStatus = true;
     },
-    async userUpdateStatus(flag) {
-      const param = { paymentIdx: this.paymentIdx, status: flag };
+    async userUpdateStatus() {
+      const param = { paymentIdx: this.paymentIdx, status: this.paymentSelectVal };
       await updateStatus(
         param,
         ({ data }) => {

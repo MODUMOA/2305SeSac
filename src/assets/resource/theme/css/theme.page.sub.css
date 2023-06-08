@@ -35,6 +35,9 @@
 
 .textarea_style_1{padding: 5px 8px; resize: none; appearance: none; height: 250px; width: 100%; border: 2px solid #A2BEB6; overflow: hidden; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em; color: #000; border-radius: 8px;}
 
+.select_style_0{outline: none; overflow: hidden; border-radius: 8px; border: 2px solid #A1A1A1; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em; color: #A1A1A1; appearance: none;
+padding: 8px 25px 6px 6px; background-image: url('../../common/img/15x9_A1A1A1_bottom_arrow.png'); background-repeat: no-repeat; background-size: 15px 9px; background-position: right 4px center;}
+
 /*btn_style_0*/
 .btn_style_0{display: inline-block; appearance: none; cursor: pointer; padding: 8px 8px 6px; border: 0px none; font-size: 11px; font-size: 1.1rem; line-height: 17px; line-height: 1.7rem; font-weight: 500; overflow: hidden; border-radius: 10px; color: #4B4B4B;}
 .btn_style_0.bg_yellow{background-color: #FED018;}
@@ -44,6 +47,7 @@
 .btn_style_0.white{color: #fff;}
 .btn_style_0.kakao{padding-top: 12px; padding-bottom: 12px; background-image: url('../../common/img/18x17_kakao_icon.png'); background-size: 18px 17px; background-repeat: no-repeat; background-position: left 10px center;}
 .btn_style_0.type_3{font-size: 13px; font-size: 1.3rem; line-height: 19px; line-height: 1.9rem;}
+.btn_style_0.more_padding{padding-right: 20px; padding-left: 20px;}
 
 .btn_style_1{display: inline-block; appearance: none; cursor: pointer; padding: 4px 18px 2px; border: 0px none; font-size: 11px; font-size: 1.1rem; line-height: 17px; line-height: 1.7rem; font-weight: 500; overflow: hidden; border-radius: 5px; color: #4B4B4B;}
 .btn_style_1.bg_yellow{background-color: #FED018;}
@@ -121,7 +125,7 @@
 .payment_list .payment_list_info_con > span{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 500; letter-spacing: -0.02em;}
 .payment_list .payment_list_info_con .payment_status{display: inline-block; box-sizing: border-box; margin-left: 5px; vertical-align: middle;}
 .payment_list .payment_list_info_con .payment_status > span{overflow: hidden; border-radius: 2px; font-size: 11px; font-size: 1.1rem; line-height: 17px; line-height: 1.7rem; font-weight: 500; color: #fff; display: inline-block; box-sizing: border-box; padding: 2px 5px;}
-.payment_list .payment_list_info_con .payment_status > span.wait{background-color: yellow;}
+.payment_list .payment_list_info_con .payment_status > span.wait{background-color: orange;}
 .payment_detail_list_con{height: 21px; margin-bottom: 20px; overflow: hidden; transition: height 0.2s ease;}
 .payment_detail_list_con > li{display: flex; justify-content: space-between;}
 .payment_detail_list_con > li > span{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 300; letter-spacing: -0.02em;}
@@ -151,6 +155,9 @@ font-size: 13px; font-size: 1.3rem; line-height: 19px; line-height: 1.9rem; font
 .qr_proceed_timer_con{font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 400; font-family: 'Inter', sans-serif;}
 .qr_proceed_timer_con .timer{font-size: 20px; font-size: 2.0rem; line-height: 26px; line-height: 2.6rem; vertical-align: bottom;}
 
-.qr_proceed_middle_con{padding-top: 200px; padding-left: 20px; padding-right: 20px;}
+.qr_proceed_middle_con{padding: 200px 20px 180px; }
 .qr_proceed_bottom_con{position: fixed; bottom: 0; left: 0; background-color: #fff; padding: 30px 20px 27px;}
 .qr_proceed_desc{z-index: 2; font-size: 15px; font-size: 1.5rem; line-height: 21px; line-height: 2.1rem; font-weight: 400;}
+
+.qr_img_container{background-color: #E8F4F1; border-radius: 10px; overflow: hidden; padding: 20px 10px; margin-bottom: 30px;}
+.qr_img_container:last-child{margin-bottom: 0;}
