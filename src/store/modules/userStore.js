@@ -1,4 +1,4 @@
-import { login, logout } from '@/api/user';
+import { login, logout } from "@/api/user";
 
 const userStore = {
   namespaced: true,
@@ -11,15 +11,15 @@ const userStore = {
     getUserInfo: function (state) {
       return state.userInfo;
     },
-    getUserName: function(state){
+    getUserName: function (state) {
       return state.userInfo.userName;
     },
-    getUserIdx : function(state){
+    getUserIdx: function (state) {
       return state.userInfo.userIdx;
     },
-    getIsLogin : function(state){
+    getIsLogin: function (state) {
       return state.isLogin;
-    }
+    },
   },
   mutations: {
     SET_IS_LOGIN: (state, isLogin) => {
@@ -40,11 +40,11 @@ const userStore = {
         ({ data }) => {
           if (data.message == "SUCCESS") {
             //성공한 경우
-            commit('SET_USER_INFO', data.result);
-            commit('SET_IS_LOGIN_ERROR', false);
+            commit("SET_USER_INFO", data.result);
+            commit("SET_IS_LOGIN_ERROR", false);
           } else {
-            commit('SET_IS_LOGIN', false);
-            commit('SET_IS_LOGIN_ERROR', true);
+            commit("SET_IS_LOGIN", false);
+            commit("SET_IS_LOGIN_ERROR", true);
           }
         },
         (error) => {
@@ -57,11 +57,11 @@ const userStore = {
         userIdx,
         ({ data }) => {
           if (data.message == "SUCCESS") {
-            commit('SET_USER_INFO', null);
-            commit('SET_IS_LOGIN', false);
-            commit('SET_IS_VALID_TOKEN', false);
+            commit("SET_USER_INFO", null);
+            commit("SET_IS_LOGIN", false);
+            commit("SET_IS_VALID_TOKEN", false);
           } else {
-            console.log('유저 정보 없음!!!!');
+            console.log("유저 정보 없음!!!!");
           }
         },
         (error) => {
