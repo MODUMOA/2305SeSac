@@ -7,14 +7,19 @@
         <div v-if="QRCode === '3'">분리수거 통</div>
       </div>
       <div class="col-12 tc qr_proceed_timer_con">
-        <span class="timer point1">{{ proceedTimerVal }}</span
-        >초 뒤에 통이 닫혀요
+        <span class="timer point1">{{ proceedTimerVal }}</span>초 뒤에 통이 닫혀요
       </div>
       <div class="col-12 tc qr_btn_con">
         <a href="javascript:void(0)">시간 연장</a>
       </div>
     </div>
-    <div class="col-12 tc qr_proceed_middle_con">각 쓰레기통마다 안내할 화면</div>
+    <div class="col-12 tc qr_proceed_middle_con">
+      <div class="col-12 tc qr_proceed_middle_con">
+        <img v-if="QRCode === '1'" :src="this.$resource.themeRes.img('qrcode_info_type1.png')" alt="일반쓰레기안내화면" />
+        <img v-if="QRCode === '2'" :src="this.$resource.themeRes.img('qrcode_info_type2.png')" alt="음식물쓰레기안내화면" />
+        <img v-if="QRCode === '3'" :src="this.$resource.themeRes.img('qrcode_info_type3.png')" alt="플라스틱안내화면" />
+      </div>
+    </div>
     <div class="col-12 qr_proceed_bottom_con">
       <div class="col-12 mb17 tc qr_btn_con">
         <a href="javascript:void(0)" @click="userCompleteQR">분리수거 끝내기</a>
@@ -81,7 +86,7 @@ export default {
 
 <style scope>
 #app {
-  background-color: #d9d9d9;
+  background-color: #ffffff;
   padding-top: 0;
   padding-bottom: 0;
 }
