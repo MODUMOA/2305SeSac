@@ -2,9 +2,9 @@
   <div class="col-12">
     <div class="col-12 qr_proceed_top_con">
       <div class="col-12 tc qr_proceed_top_title">
-        <div v-if="QRCode === '1'">일반쓰레기 통</div>
-        <div v-else-if="QRCode === '2'">음식물쓰레기 통</div>
-        <div v-else-if="QRCode === '3'">분리수거 통</div>
+        <div v-if="QRCode == '1'">일반쓰레기 통</div>
+        <div v-else-if="QRCode == '2'">음식물쓰레기 통</div>
+        <div v-else-if="QRCode == '3'">분리수거 통</div>
       </div>
       <div class="col-12 tc qr_proceed_timer_con">
         <span class="timer point1">{{ proceedTimerVal }}</span
@@ -14,28 +14,46 @@
         <a href="javascript:void(0)">시간 연장</a>
       </div>
     </div>
-    <div v-if="QRCode === '1'" class="col-12 tc qr_proceed_middle_con">
+    <div v-if="QRCode == '1'" class="col-12 tc qr_proceed_middle_con">
       <div class="col-12 qr_img_container">
-        <img :src="this.$resource.themeRes.img('normal_trash_info_img_000.png')" alt="일반 쓰레기 정보 이미지 000"/>
+        <img
+          :src="this.$resource.themeRes.img('normal_trash_info_img_000.png')"
+          alt="일반 쓰레기 정보 이미지 000"
+        />
       </div>
       <div class="col-12 qr_img_container">
-        <img :src="this.$resource.themeRes.img('normal_trash_info_img_001.png')" alt="일반 쓰레기 정보 이미지 001"/>
+        <img
+          :src="this.$resource.themeRes.img('normal_trash_info_img_001.png')"
+          alt="일반 쓰레기 정보 이미지 001"
+        />
       </div>
     </div>
     <div v-else-if="QRCode === '2'" class="col-12 tc qr_proceed_middle_con">
       <div class="col-12 qr_img_container">
-        <img :src="this.$resource.themeRes.img('food_trash_info_img_000.png')" alt="음식물 쓰레기 정보 이미지 000"/>
+        <img
+          :src="this.$resource.themeRes.img('food_trash_info_img_000.png')"
+          alt="음식물 쓰레기 정보 이미지 000"
+        />
       </div>
       <div class="col-12 qr_img_container">
-        <img :src="this.$resource.themeRes.img('food_trash_info_img_001.png')" alt="음식물 쓰레기 정보 이미지 001"/>
+        <img
+          :src="this.$resource.themeRes.img('food_trash_info_img_001.png')"
+          alt="음식물 쓰레기 정보 이미지 001"
+        />
       </div>
     </div>
     <div v-else-if="QRCode === '3'" class="col-12 tc qr_proceed_middle_con">
       <div class="col-12 qr_img_container">
-        <img :src="this.$resource.themeRes.img('plastic_trash_info_img_000.png')" alt="플라스틱 쓰레기 정보 이미지 000"/>
+        <img
+          :src="this.$resource.themeRes.img('plastic_trash_info_img_000.png')"
+          alt="플라스틱 쓰레기 정보 이미지 000"
+        />
       </div>
       <div class="col-12 qr_img_container">
-        <img :src="this.$resource.themeRes.img('plastic_trash_info_img_001.png')" alt="플라스틱 쓰레기 정보 이미지 001"/>
+        <img
+          :src="this.$resource.themeRes.img('plastic_trash_info_img_001.png')"
+          alt="플라스틱 쓰레기 정보 이미지 001"
+        />
       </div>
     </div>
     <div class="col-12 qr_proceed_bottom_con">
@@ -78,7 +96,6 @@ export default {
       await completeQR(
         ({ data }) => {
           if (data == "SUCCESS") {
-            alert("버리기 완료했습니다");
             this.$router.push({ name: "Main" });
           }
         },
