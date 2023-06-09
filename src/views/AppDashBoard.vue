@@ -89,7 +89,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style scope>
 @import '@/assets/resource/theme/css/theme.layout.sub.css';
 @import '@/assets/resource/theme/css/theme.page.sub.css';
 </style>

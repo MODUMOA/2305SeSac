@@ -64,5 +64,6 @@ export default {
 </script>
 
 <style scope>
+body {background-color:#FFFBEC !important;}
 #app{background-color:#FFFBEC;}
 </style>

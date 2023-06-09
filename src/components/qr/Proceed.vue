@@ -103,9 +103,6 @@ export default {
 </script>
 
 <style scope>
-#app {
-  background-color: #fff;
-  padding-top: 0;
-  padding-bottom: 0;
-}
+body {background-color: #fff !important;}
+#app {background-color: #fff; padding-top: 0; padding-bottom: 0;}
 </style>
