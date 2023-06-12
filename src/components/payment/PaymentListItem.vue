@@ -52,6 +52,11 @@
         </div>
       </div>
     </div>
+    <alert-popup
+      :popupStatus="alertOpenStatus"
+      :alertMsg="alertMsg"
+      @closePopup="closePopup"
+    ></alert-popup>
   </div>
 </template>
 
@@ -67,6 +72,8 @@ export default {
   },
   data() {
     return {
+      alertOpenStatus: false,
+      alertMsg: null,
       openStatus: false,
       toggleStatus: false,
       paymentSelectVal : "1",
@@ -108,17 +115,25 @@ export default {
             this.$emit("emitChangeStatus", param);
             this.close();
           } else {
-            alert("결제에 실패했습니다. 잠시 후 다시 시도해주세요");
+            this.openPopup("결제에 실패했습니다.<br/>잠시 후 다시 시도해주세요");
           }
         },
         (error) => {
-          alert("서버 오류가 발생했습니다. 관리자에 문의해주세요");
+          this.openPopup("서버 오류가 발생했습니다.<br/>관리자에 문의해주세요");
           console.dir(error);
         }
       );
     },
     close() {
       this.openStatus = false;
+    },
+    openPopup(msg) {
+      this.alertOpenStatus = true;
+      this.alertMsg = msg;
+    },
+    closePopup() {
+      this.alertOpenStatus = false;
+      this.alertMsg = null;
     },
   },
 };

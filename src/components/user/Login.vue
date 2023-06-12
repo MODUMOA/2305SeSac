@@ -37,16 +37,30 @@
       </ul>
       <button class="col-12 tc btn_style_0 bg_yellow type_2 kakao">카카오 로그인</button>
     </div>
+    <alert-popup
+      :popupStatus="alertOpenStatus"
+      :alertMsg="alertMsg"
+      @closePopup="closePopup"
+    ></alert-popup>
   </div>
 </template>
 
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import AlertPopup from '../util/AlertPopup.vue';
+
+const userStore = 'userStore';
+
 export default {
   name: 'UserLogin',
+  components : {
+    AlertPopup,
+  },
   data() {
     return {
+      alertOpenStatus: false,
+      alertMsg: null,
       user: {
         userId: '',
         userPwd: '',
@@ -54,10 +68,34 @@ export default {
     };
   },
   methods: {
-    ...mapActions('userStore', ['userConfirm']),
+    ...mapGetters(userStore, ['getIsLogin']),
+    ...mapActions(userStore, ['userConfirm']),
     async loginUser() {
+      if(this.user.userId == null || this.user.userId == ''){
+        this.openPopup("아이디를 입력해주세요");
+        return;
+      }
+
+      if(this.user.userPwd == null || this.user.userPwd == ''){
+        this.openPopup("비밀번호를 입력해주세요");
+        return;
+      }
+
       await this.userConfirm(this.user);
-      this.$router.push({name:"Main"});
+
+      if(this.getIsLogin()){
+        this.$router.push({name:"Main"});
+      } else {
+        this.openPopup('로그인에 실패했습니다.<br/>다시 한번 확인해주세요.');
+      }
+    },
+    openPopup(msg) {
+      this.alertOpenStatus = true;
+      this.alertMsg = msg;
+    },
+    closePopup() {
+      this.alertOpenStatus = false;
+      this.alertMsg = null;
     },
   },
 };

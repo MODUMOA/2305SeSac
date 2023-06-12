@@ -41,6 +41,11 @@
         </div>
       </div>
     </div>
+    <alert-popup
+      :popupStatus="alertOpenStatus"
+      :alertMsg="alertMsg"
+      @closePopup="closePopup"
+    ></alert-popup>
   </div>
 </template>
 
@@ -58,6 +63,8 @@ export default {
     return {
       showCamera: false,
       openStatus: false,
+      alertOpenStatus: false,
+      alertMsg: null,
       QRCode: null,
       error: "",
       textCode: null,
@@ -82,7 +89,7 @@ export default {
     },
     inputQR() {
       if (this.textCode == null || this.textCode == "") {
-        alert("코드입력을 해주시기 바랍니다");
+        this.openPopup("코드입력을 해주시기 바랍니다");
         return;
       }
       this.submitQR(this.textCode);
@@ -110,8 +117,7 @@ export default {
           if (data == "SUCCESS") {
             this.$router.push({ name: "QRProceed", params: { QRCode: code } });
           } else {
-            ``;
-            alert("유효하지 않은 QR코드입니다. 다시 한번 확인해주세요.");
+            this.openPopup("유효하지 않은 QR코드입니다.<br/>다시 한번 확인해주세요.");
           }
         },
         (error) => {
@@ -131,6 +137,14 @@ export default {
     },
     stopPropagation(event) {
       event.stopPropagation(); // 이벤트 전파 중단
+    },
+    openPopup(msg) {
+      this.alertOpenStatus = true;
+      this.alertMsg = msg;
+    },
+    closePopup() {
+      this.alertOpenStatus = false;
+      this.alertMsg = null;
     },
   },
 };

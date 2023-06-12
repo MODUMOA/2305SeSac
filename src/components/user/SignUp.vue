@@ -88,7 +88,7 @@
     <alert-popup
       :popupStatus="alertOpenStatus"
       :alertMsg="alertMsg"
-      @closePopup="closePopup"
+      @closePopup="closeFn"
     ></alert-popup>
   </div>
 </template>
@@ -108,6 +108,7 @@ export default {
     return {
       alertOpenStatus: false,
       alertMsg: null,
+      closeFn : '',
       duplicatedIdVal: "",
       checkIdStatus: false,
       checkPasswordStatus: false,
@@ -184,7 +185,7 @@ export default {
         },
         (error) => {
           console.log(error);
-          alert("에러로 실패했습니다. 관리자에 문의해주세요.");
+          this.openPopup("에러로 실패했습니다.<br/>관리자에 문의해주세요.");
         }
       );
     },
@@ -233,25 +234,35 @@ export default {
         this.user,
         ({ data }) => {
           if (data) {
-            alert("가입이 완료되었습니다.");
-            this.$router.push({ name: "UserLogin" });
+            this.openRouterPopup("가입이 완료되었습니다.");
           } else {
-            alert("가입에 실패했습니다. 잠시 후 다시 시도해주세요.");
+            this.openPopup("가입에 실패했습니다.<br/>잠시 후 다시 시도해주세요.");
           }
         },
         (error) => {
           console.log(error);
-          alert("에러로 실패했습니다. 관리자에 문의해주세요.");
+          this.openPopup("에러로 실패했습니다.<br/>관리자에 문의해주세요.");
         }
       );
     },
     openPopup(msg) {
       this.alertOpenStatus = true;
       this.alertMsg = msg;
+      this.closeFn = this.closePopup;
+    },
+    openRouterPopup(msg) {
+      this.alertOpenStatus = true;
+      this.alertMsg = msg;
+      this.closeFn = this.closeRouterPopup;
     },
     closePopup() {
       this.alertOpenStatus = false;
       this.alertMsg = null;
+    },
+    closeRouterPopup() {
+      this.alertOpenStatus = false;
+      this.alertMsg = null;
+      this.$router.push({ name: "UserLogin" });
     },
   },
 };

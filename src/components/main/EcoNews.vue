@@ -1,14 +1,53 @@
 <template>
-  <div class="col-12 pt17 pb20 white_container">
+  <div class="col-12 pt17 pb20 pl20 pr20 white_container">
     <div class="col-12 mb17 font-size-15">ECO 뉴스</div>
-    <div class="col-12 main_new_video_con">
-      <iframe width="100%" height="200" src="https://www.youtube.com/embed/YHdJq7MpFXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="col-12 main_new_video_wrap">
+        <swiper :options="swiperOption" class="col-12 main_new_video_con">
+        <swiper-slide>
+          <iframe width="100%" height="200" src="https://www.youtube.com/embed/YHdJq7MpFXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </swiper-slide>
+        <swiper-slide>
+          <iframe width="100%" height="200" src="https://www.youtube.com/embed/YHdJq7MpFXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </swiper-slide>
+        <swiper-slide>
+          <iframe width="100%" height="200" src="https://www.youtube.com/embed/YHdJq7MpFXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </swiper-slide>
+      </swiper>
+      <div class="col-12 mt10 tc main_pagination_con"></div>
+      <div class="col-0 main_rolling_arrow prev"></div>
+      <div class="col-0 main_rolling_arrow next"></div>
     </div>
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import 'swiper/css/swiper.css';
+
 export default {
   name: 'MainDashBoard',
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  data() {
+    return {
+      swiperOption: {
+        direction: 'horizontal',
+        loop: true,
+        pagination: {
+          //페이징 사용자 설정
+          el: '.main_pagination_con', //페이징 태그 클래스 설정
+          type: 'bullets',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.main_rolling_arrow.next', // 다음 버튼 클래스명
+          prevEl: '.main_rolling_arrow.prev', // 이번 버튼 클래스명
+        },
+      },
+      swiperData: [],
+    };
+  },
 }
 </script>

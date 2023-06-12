@@ -70,7 +70,7 @@
     <alert-popup
       :popupStatus="alertOpenStatus"
       :alertMsg="alertMsg"
-      @closePopup="closePopup"
+      @closePopup="closeFn"
     ></alert-popup>
   </div>
 </template>
@@ -91,6 +91,7 @@ export default {
     return {
       alertOpenStatus: false,
       alertMsg: null,
+      closeFn : '',
       openStatus : true,
       checkPasswordStatus: false,
       confirmPasswordStatus : false,
@@ -123,7 +124,7 @@ export default {
             this.checkPassword();
             this.close();
           } else {
-            alert('비밀번호가 틀렸습니다. 다시 한번 확인해주세요');
+            this.openPopup('비밀번호가 틀렸습니다.<br/>다시 한번 확인해주세요');
           }
         },
         (error) => {
@@ -183,7 +184,7 @@ export default {
         this.user,
         ({data}) => {
           if(data.result){
-            alert('변경이 완료되었습니다.');
+            this.openRouterPopup('변경이 완료되었습니다.');
             this.$router.push({name : 'Main'});
           }
         },
@@ -195,10 +196,21 @@ export default {
     openPopup(msg) {
       this.alertOpenStatus = true;
       this.alertMsg = msg;
+      this.closeFn = this.closePopup;
+    },
+    openRouterPopup(msg) {
+      this.alertOpenStatus = true;
+      this.alertMsg = msg;
+      this.closeFn = this.closeRouterPopup;
     },
     closePopup() {
       this.alertOpenStatus = false;
       this.alertMsg = null;
+    },
+    closeRouterPopup() {
+      this.alertOpenStatus = false;
+      this.alertMsg = null;
+      this.$router.push({name : 'Main'});
     },
   },
   created() {
