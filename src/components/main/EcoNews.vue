@@ -48,12 +48,12 @@ export default {
         },
         {
           dataNo : 2,
-          link : 'https://www.youtube.com/watch?v=xHStKyZ-UrQ',
+          link : 'https://www.youtube.com/embed/xHStKyZ-UrQ',
           title : '2023년부터 쓰레기 봉투에 "이것" 넣으면 과태료 내야합니다. 당장 빼셔야합니다!',
         },
         {
           dataNo : 3,
-          link : 'https://www.youtube.com/watch?v=w4KMk5mA9jE',
+          link : 'https://www.youtube.com/embed/w4KMk5mA9jE',
           title : '다양하고 복잡한 플라스틱 분리수거! 한방에 정리!!',
         },
       ],
