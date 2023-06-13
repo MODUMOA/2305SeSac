@@ -10,19 +10,29 @@ import AppDashBoard from '../views/AppDashBoard.vue'
 
 import store from '@/store';
 
-
 //import store from '@/store';
 
 Vue.use(VueRouter)
 
 const onlyAuthUser = async (to, from, next) => {
-  const getUserInfo = store.getters['userStore/getUserInfo'];
-  const getIsLogin = store.getters['userStore/getIsLogin'];
+  let getUserInfo = store.getters['userStore/getUserInfo'];
+  let getIsLogin = store.getters['userStore/getIsLogin'];
   //로그인이 안되어 있을 때
   if (getUserInfo == null && !getIsLogin) {
-    alert('로그인이 필요한 페이지입니다');
-    // next({ name: "login" });
-    router.push({ name: 'UserLogin' });
+    if(localStorage.getItem("autoToken") != null){
+      store.dispatch('userStore/userAutoConfirm', localStorage.getItem("autoToken"));
+      getUserInfo = store.getters['userStore/getUserInfo'];
+      getIsLogin = store.getters['userStore/getIsLogin'];
+      if(getUserInfo == null && !getIsLogin){
+        alert('로그인이 필요한 페이지입니다');
+        router.push({ name: 'UserLogin' });  
+      } else {
+        next();
+      }
+    } else {
+      alert('로그인이 필요한 페이지입니다');
+      router.push({ name: 'UserLogin' });
+    }
   } else {
     //로그인이 되어있을 때
     next();
@@ -95,6 +105,13 @@ const routes = [
         beforeEnter: onlyAuthNotUser,
         component: () =>
           import(/* webpackChunkName: "notice" */ '../components/user/Login.vue'),
+      },
+      {
+        path: 'logout',
+        name: 'UserLogout',
+        beforeEnter: onlyAuthUser,
+        component: () =>
+          import(/* webpackChunkName: "about" */ '../components/user/Logout.vue'),
       },
       {
         path: 'signUp',

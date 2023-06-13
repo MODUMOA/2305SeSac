@@ -19,6 +19,7 @@
             <img :src="this.$resource.themeRes.img('logo-white.png')" alt="로고" />
           </a>
           <div class="col-0">
+            <router-link v-if="isLogin" :to="{name : 'UserLogout'}" class="col-0 logout_btn">로그아웃</router-link>
             <a href="javascript:void(0)" class="col-0 popup_close_btn" @click="closeClickGnb()">닫기 버튼</a>
           </div>
         </div>
@@ -32,14 +33,23 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import TheHeaderGnb from './item/Gnb.vue';
+
+const userStore = 'userStore';
 
 export default {
   name: 'TheHeader',
   components: {
     TheHeaderGnb,
   },
+  data() {
+    return {
+      isLogin : this.getIsLogin(),
+    }
+  },
   methods : {
+    ...mapGetters(userStore, ['getIsLogin']),
       //클릭 헤더 열기
       openClickGnb() {
           const clickGnb = this.$refs.clickHeader;

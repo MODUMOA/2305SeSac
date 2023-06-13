@@ -44,3 +44,4 @@ header{position: fixed; top: 0; left: 0; background-color :#A7CEC3;  z-index: 10
 .click_header_con .bottom_con ul > li.card > a.router-link-exact-active{background-image: url('../img/header_card_icon_active.png');}
 
 .click_header_wrap .popup_close_btn{background-image: url('../../common/img/16x16_575757_x_icon.png'); background-repeat: no-repeat; font-size: 0; line-height: 0; width: 16px; height: 16px; background-size: cover;}
+.click_header_con .top_con .logout_btn{font-size: 13px; font-size: 1.3rem; line-height: 19px; line-height: 1.9rem; font-weight: 500; letter-spacing: -0.02em; color: #575757; display: inline-block; margin-right: 10px;}

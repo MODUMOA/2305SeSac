@@ -1,4 +1,4 @@
-import { login, logout } from "@/api/user";
+import { login, autoLogin, logout } from "@/api/user";
 
 const userStore = {
   namespaced: true,
@@ -16,6 +16,9 @@ const userStore = {
     },
     getUserIdx: function (state) {
       return state.userInfo.userIdx;
+    },
+    getUserToken: function (state) {
+      return state.userInfo.token;
     },
     getIsLogin: function (state) {
       return state.isLogin;
@@ -52,6 +55,25 @@ const userStore = {
         }
       );
     },
+    async userAutoConfirm({ commit }, token){
+      await autoLogin(
+        token,
+        ({ data }) => {
+          if (data.message == "SUCCESS") {
+            //성공한 경우
+            commit("SET_USER_INFO", data.result);
+            commit("SET_IS_LOGIN_ERROR", false);
+          } else {
+            commit("SET_IS_LOGIN", false);
+            commit("SET_IS_LOGIN_ERROR", true);
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+
     async userLogout({ commit }, userIdx) {
       await logout(
         userIdx,
@@ -59,7 +81,7 @@ const userStore = {
           if (data.message == "SUCCESS") {
             commit("SET_USER_INFO", null);
             commit("SET_IS_LOGIN", false);
-            commit("SET_IS_VALID_TOKEN", false);
+            localStorage.removeItem("autoToken");
           } else {
             console.log("유저 정보 없음!!!!");
           }

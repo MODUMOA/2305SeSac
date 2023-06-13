@@ -28,7 +28,7 @@
       <ul class="col-12 mb20 login_info_list_con">
         <li>
           <label class="switch_style_0">
-            <input type="checkbox"/>
+            <input type="checkbox" v-model="autoLogin"/>
             <span class="slider round"></span>
             <span>자동로그인</span>
           </label>
@@ -60,6 +60,7 @@ export default {
   data() {
     return {
       alertOpenStatus: false,
+      autoLogin : false,
       alertMsg: null,
       user: {
         userId: '',
@@ -68,7 +69,7 @@ export default {
     };
   },
   methods: {
-    ...mapGetters(userStore, ['getIsLogin']),
+    ...mapGetters(userStore, ['getIsLogin', 'getUserToken']),
     ...mapActions(userStore, ['userConfirm']),
     async loginUser() {
       if(this.user.userId == null || this.user.userId == ''){
@@ -84,6 +85,11 @@ export default {
       await this.userConfirm(this.user);
 
       if(this.getIsLogin()){
+        //자동로그인 체크 상태
+        if(this.autoLogin){
+          localStorage.setItem("autoToken", this.getUserToken());
+        }
+
         this.$router.push({name:"Main"});
       } else {
         this.openPopup('로그인에 실패했습니다.<br/>다시 한번 확인해주세요.');
