@@ -32,15 +32,14 @@ async function login(user, success, fail) {
     .catch(fail);
 }
 
-<<<<<<< Updated upstream
 async function autoLogin(token, success, fail) {
-  await api.post(path + `/autoLogin`, JSON.stringify(token)).then(success).catch(fail);
+  await api
+    .post(path + `/autoLogin`, JSON.stringify(token))
+    .then(success)
+    .catch(fail);
 }
 
 async function logout(userIdx, success, fail) {
-  await api.get(path + `/logout/${userIdx}`).then(success).catch(fail);
-=======
-async function logout(userNo, success, fail) {
   await api
     .get(path + `/logout/${userIdx}`)
     .then(success)
@@ -75,4 +74,15 @@ async function update(userIdx, user, success, fail) {
     .catch(fail);
 }
 
-export { checkId, signUp, getInfo, login, autoLogin, logout, findId, findPw, checkingPassword, update };
+export {
+  checkId,
+  signUp,
+  getInfo,
+  login,
+  autoLogin,
+  logout,
+  findId,
+  findPw,
+  checkingPassword,
+  update,
+};

@@ -93,7 +93,7 @@ export default {
           localStorage.setItem("autoToken", this.getUserToken());
         }
 
-        this.$router.push({ name: "Main" });
+        this.$router.push({ name: "Main" }).then(() => window.location.reload());
       } else {
         this.openPopup("로그인에 실패했습니다.<br/>다시 한번 확인해주세요.");
       }
