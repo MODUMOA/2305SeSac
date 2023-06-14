@@ -50,15 +50,16 @@ const userStore = {
             commit("SET_IS_LOGIN_ERROR", true);
           }
         },
-        (error) => {
+        error => {
           console.log(error);
         }
       );
     },
-    async userAutoConfirm({ commit }, token){
+    async userAutoConfirm({ commit }, token) {
       await autoLogin(
         token,
         ({ data }) => {
+          console.log(data);
           if (data.message == "SUCCESS") {
             //성공한 경우
             commit("SET_USER_INFO", data.result);
@@ -68,7 +69,7 @@ const userStore = {
             commit("SET_IS_LOGIN_ERROR", true);
           }
         },
-        (error) => {
+        error => {
           console.log(error);
         }
       );
@@ -86,7 +87,7 @@ const userStore = {
             console.log("유저 정보 없음!!!!");
           }
         },
-        (error) => {
+        error => {
           console.log(error);
         }
       );

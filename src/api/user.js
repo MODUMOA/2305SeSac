@@ -34,7 +34,7 @@ async function login(user, success, fail) {
 
 async function autoLogin(token, success, fail) {
   await api
-    .post(path + `/autoLogin`, JSON.stringify(token))
+    .post(path + `/autoLogin`, JSON.stringify({ token: token }))
     .then(success)
     .catch(fail);
 }
