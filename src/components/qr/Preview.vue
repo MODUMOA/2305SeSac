@@ -151,6 +151,10 @@ export default {
 </script>
 
 <style scope>
-body {background-color: #a7cec3 !important;}
-#app {background-color: #a7cec3;}
+body {
+  background-color: #a7cec3 !important;
+}
+#app {
+  background-color: #a7cec3;
+}
 </style>

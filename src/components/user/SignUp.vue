@@ -23,7 +23,7 @@
                 type="text"
                 class="input_style_0"
                 id="signUpId"
-                v-model="user.id"
+                v-model="user.userId"
                 @keyup="changeId"
                 @keyup.enter="userCheckId"
               />
@@ -39,7 +39,7 @@
                 type="password"
                 class="input_style_0"
                 id="signUpPassword"
-                v-model="user.password"
+                v-model="user.userPwd"
                 @keyup="checkPassword"
               />
               <div class="col-12 mt7 addr_text" ref="checkPasswordText" style="display: none"></div>
@@ -99,7 +99,7 @@ import TheHeader from "@/components/inc/header/TheHeader.vue";
 import TheFooter from "@/components/inc/footer/TheFooter.vue";
 import AlertPopup from "../util/AlertPopup.vue";
 
-const duplicateId = "k3371548";
+const duplicateId = "";
 
 export default {
   name: "UserSignUp",
@@ -108,15 +108,16 @@ export default {
     return {
       alertOpenStatus: false,
       alertMsg: null,
-      closeFn : '',
+      closeFn: "",
       duplicatedIdVal: "",
       checkIdStatus: false,
       checkPasswordStatus: false,
       confirmPasswordStatus: false,
       user: {
-        id: "",
-        password: "",
+        userId: "",
+        userPwd: "",
         nickName: "",
+        userName: "user",
       },
     };
   },
@@ -130,7 +131,7 @@ export default {
     },
     checkPassword() {
       this.checkConfirmPassword();
-      if (this.user.password == null || this.user.password == "") {
+      if (this.user.userPwd == null || this.user.userPwd == "") {
         this.$refs.checkPasswordText.innerHTML = "";
         this.$refs.checkPasswordText.style.display = "none";
         this.$refs.passwordInfoText.style.display = "";
@@ -139,7 +140,7 @@ export default {
       }
 
       const regex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
-      if (regex.test(this.user.password)) {
+      if (regex.test(this.user.userPwd)) {
         this.$refs.checkPasswordText.innerHTML =
           '<span class="success fontweight600">사용 가능</span>한 비밀번호 입니다.';
         this.$refs.passwordInfoText.style.display = "none";
@@ -155,7 +156,7 @@ export default {
     },
     checkConfirmPassword() {
       let confirmPasswordText = '비밀번호가 <span class="success fontweigth600">일치</span>합니다.';
-      if (this.user.password == this.$refs.signUpConfirmPassword.value) {
+      if (this.user.userPwd == this.$refs.signUpConfirmPassword.value) {
         this.confirmPasswordStatus = true;
       } else {
         confirmPasswordText = '비밀번호가 <span class="warning fontweigth600">불일치</span>합니다.';
@@ -165,16 +166,17 @@ export default {
       this.$refs.checkConfirmPasswordText.style.display = "";
     },
     async userCheckId() {
-      if (this.user.id == "") {
+      if (this.user.userId == "") {
         this.openPopup("아이디를 입력해주세요");
         return;
       }
 
       await checkId(
-        this.user.id,
+        this.user.userId,
         ({ data }) => {
-          if (data) {
-            this.duplicatedIdVal = this.user.id;
+          console.log(data);
+          if (data.result) {
+            this.duplicatedIdVal = this.user.userId;
             this.checkIdStatus = true;
             this.openPopup("사용 가능한 아이디입니다");
           } else {
@@ -191,7 +193,7 @@ export default {
     },
     async signUp() {
       //아이디 체크
-      if (this.user.id == "" || this.user.id == null) {
+      if (this.user.userId == "" || this.user.userId == null) {
         this.openPopup("아이디를 입력해주세요");
         return;
       }
@@ -200,7 +202,7 @@ export default {
         return;
       }
 
-      if (this.user.password == "" || this.user.password == null) {
+      if (this.user.userPwd == "" || this.user.userPwd == null) {
         this.openPopup("비밀번호를 입력해주세요");
         return;
       }
@@ -220,20 +222,11 @@ export default {
         return;
       }
 
-      if (
-        this.user.email0 == "" ||
-        this.user.email0 == null ||
-        this.user.email1 == "" ||
-        this.user.email1 == null
-      ) {
-        this.openPopup("이메일을 입력해주세요");
-        return;
-      }
-
       await signUp(
         this.user,
         ({ data }) => {
-          if (data) {
+          console.log(data);
+          if (data.message == "SUCCESS") {
             this.openRouterPopup("가입이 완료되었습니다.");
           } else {
             this.openPopup("가입에 실패했습니다.<br/>잠시 후 다시 시도해주세요.");

@@ -96,7 +96,7 @@ export default {
       await completeQR(
         ({ data }) => {
           if (data == "SUCCESS") {
-            this.$router.push({ name: "Main" });
+            this.$router.push({ name: "Main" }).then(() => window.location.reload());
           }
         },
         (error) => {
@@ -120,6 +120,12 @@ export default {
 </script>
 
 <style scope>
-body {background-color: #fff !important;}
-#app {background-color: #fff; padding-top: 0; padding-bottom: 0;}
+body {
+  background-color: #fff !important;
+}
+#app {
+  background-color: #fff;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 </style>
